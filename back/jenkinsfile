@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git branch: 'amine_branch', url: 'https://github.com/AS-Byte/team1_devops_project.git',
-                credentialsId: 'AO-Byte/****** (git_pwd_pat)'
+                git branch: 'amine_branch', url: 'https://github.com/AS-Byte/team1_devops_project/back/.git',
+                credentialsId: 'git_pwd_pat'
                    }
                         }
         stage('Mvn-VERSION') {
@@ -12,7 +12,6 @@ pipeline {
                 sh """mvn -version"""
                   }
                         }
-
         stage('Mvn-ClEAN') {
             steps {
                  sh """mvn clean"""
@@ -29,6 +28,6 @@ pipeline {
                 {sh """mvn sonar:sonar"""}
                    }
                             }
-                            */
+        */
     }
    }
