@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'amine_branch', url: 'https://github.com/AS-Byte/team1_devops_project.git',
-                credentialsId: 'git_pwd_pat'
+                credentialsId: 'AO-Byte/****** (git_pwd_pat)'
                    }
                         }
         stage('Mvn-VERSION') {
