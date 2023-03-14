@@ -14,7 +14,7 @@ pipeline {
                         }
         stage('Mvn-ClEAN') {
             steps {
-                 sh """mvn clean -X"""
+                 sh """mvn -X clean"""
                     }
                             }
         stage('Mvn-COMPILE') {
