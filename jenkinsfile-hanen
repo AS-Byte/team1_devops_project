@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git branch: 'hanen-branch',
+                git branch: 'hanen_branch',
                 url: 'https://github.com/AS-Byte/team1_devops_project.git',
                 credentialsId: 'git_pwd_pat'
                    }
