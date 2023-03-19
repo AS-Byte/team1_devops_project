@@ -1,4 +1,5 @@
 package tn.esp.team1.entities;
+
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -46,3 +47,4 @@ public class Fournisseur implements Serializable {
 
 
 }
+
