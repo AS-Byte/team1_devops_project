@@ -1,5 +1,4 @@
 package tn.esp.team1.entities;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -36,4 +35,3 @@ public class Reglement implements Serializable{
     private Facture facture;
 
 }
-

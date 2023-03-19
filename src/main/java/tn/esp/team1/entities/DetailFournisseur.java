@@ -1,5 +1,4 @@
 package tn.esp.team1.entities;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -14,7 +13,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Entity
 @Getter
 @Setter
@@ -33,5 +31,4 @@ public class DetailFournisseur implements Serializable{
     @OneToOne(mappedBy="detailFournisseur")
     @JsonIgnore
     private Fournisseur fournisseur;
-
 }

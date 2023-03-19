@@ -1,5 +1,4 @@
 package tn.esp.team1.entities;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -16,7 +15,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Entity
 @Getter
 @Setter
@@ -47,9 +45,5 @@ public class Produit implements Serializable {
     @ManyToOne
     @JsonIgnore
     private CategorieProduit categorieProduit;
-
-
-
-
 
 }
