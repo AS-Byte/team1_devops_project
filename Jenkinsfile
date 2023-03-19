@@ -7,9 +7,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git branch: 'master',
+                git branch: 'nada_branch',
                 credentialsId: 'github',
-                url: 'https://github.com/NadaGharbi/testProject.git'
+                url: 'https://github.com/AS-Byte/team1_devops_project.git'
             }
         }
 
