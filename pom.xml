@@ -15,8 +15,8 @@
     <description>team1</description>
     <distributionManagement>
         <repository>
-            <id>ProjetDevops_NexusRepo</id>
-            <url>http://192.168.43.110:8081/repository/ProjetDevops_NexusRepo/</url>
+            <id>ProjetDevopsNexusRepo</id>
+            <url>http://192.168.43.110:8081/repository/ProjetDevopsNexusRepo/</url>
         </repository>
     </distributionManagement>
     <properties>
