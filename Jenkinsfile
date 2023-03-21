@@ -4,6 +4,14 @@ pipeline {
     maven "M2_HOME"
     }
 
+    environment {
+            NEXUS_VERSION = "nexus3"
+            NEXUS_PROTOCOL = "http"
+            NEXUS_URL = "http://192.168.43.110/:8081"
+            NEXUS_REPOSITORY = "ProjetDevops_NexusRepo"
+            NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
+        }
+
     stages {
         stage('Build') {
             steps {
@@ -33,6 +41,14 @@ pipeline {
 
                     }
                 }
+
+                stage('mvn-SONARQUBE') {
+                                    steps {
+
+                                     sh """mvn deploy"""
+
+                                    }
+                                }
 
     }
 }
