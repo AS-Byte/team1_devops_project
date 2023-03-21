@@ -36,5 +36,19 @@ pipeline {
                    }
                               }
 
+
+       stage('Mvn-NEXUS') {
+            steps {
+                    {sh """mvn deploy """}
+
+                                                 }
+                                                            }
+
+
+
+
+
+
+
     }
    }
