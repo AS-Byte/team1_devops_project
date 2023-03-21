@@ -109,12 +109,7 @@
         <profile>
             <id>autreDistrib</id>
             <distributionManagement>
-                <repository>
-                    <id>releases</id>
-                    <name>Releases</name>
-                    <url>http://192.168.108.222:8081/repository/maven-releases/</url>
 
-                </repository>
                 <snapshotRepository>
                     <id>snapshots</id>
                     <name>Internal Snapshots</name>
