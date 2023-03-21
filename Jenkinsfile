@@ -42,7 +42,7 @@ pipeline {
                     }
                 }
 
-                stage('mvn-SONARQUBE') {
+                stage('mvn-DEPLOY') {
                                     steps {
 
                                      sh """mvn deploy"""
