@@ -39,10 +39,10 @@ pipeline {
 
        stage('Mvn-NEXUS') {
             steps {
-                    {sh """mvn deploy """}
+                    sh """mvn deploy """
 
-                                                 }
-                                                            }
+                   }
+                           }
 
 
 
