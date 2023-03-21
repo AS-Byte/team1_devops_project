@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    tools {
-    maven "M2_HOME"
-    }
-
     stages {
         stage('Build') {
             steps {
@@ -26,8 +22,8 @@ pipeline {
                     steps {
                     withSonarQubeEnv('SonarQube'){
                      sh """mvn sonar:sonar"""
-                    }
-                    }
-                }
+                                                  }
+                           }
+                                }
     }
 }
