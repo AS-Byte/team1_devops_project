@@ -8,8 +8,8 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'khalil_branch',
-                url: 'https://github.com/AS-Byte/team1_devops_project.git',
-               url: 'url: 'https://github.com/AS-Byte/team1_devops_project.git''
+                url: 'https://github.com/AS-Byte/team1_devops_project.git'
+               
                    }
                         }
         stage('Mvn-VERSION') {
