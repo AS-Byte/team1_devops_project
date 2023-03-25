@@ -51,7 +51,7 @@ pipeline {
 
        stage('Upload War To NEXUS') {
             steps {
-                    sh """mvn deploy """
+                    sh """mvn deploy-file """
 
                    }
                            }
