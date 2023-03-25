@@ -8,5 +8,11 @@ pipeline {
                
              }
          }
+         stage('testing Maven') {
+            steps {
+                sh """mvn -version""";
+               
+             }
+         }
     }
 }
