@@ -5,14 +5,7 @@ pipeline {
                 maven "M2_HOME"
             }
 
-            environment {
-                        NEXUS_VERSION = "nexus3"
-                        NEXUS_PROTOCOL = "http"
-                        NEXUS_URL = "http://192.168.108.222:8081/"
-                        NEXUS_REPOSITORY = "Team1-Devops"
-                        NEXUS_CREDENTIAL_ID = "Nexus-Credential"
-                        version:"${mavenPom.version}"
-                    }
+
 
 
 
@@ -59,10 +52,18 @@ pipeline {
                nexusArtifactUploader artifacts:[
                [artifactId:'team1',
                classifier:'',
-               file:"target/team1-£${mavenPom.version}.war",
+               file:"target/team1-${mavenPom.version}.war",
                type:'war'
                ]
-              ]
+               ],
+
+                   NEXUS_VERSION = "nexus3"
+                   NEXUS_PROTOCOL = "http"
+                   NEXUS_URL = "http://192.168.108.222:8081/"
+                   NEXUS_REPOSITORY = "Team1-Devops"
+                   NEXUS_CREDENTIAL_ID = "Nexus-Credential"
+                   version:"${mavenPom.version}"
+
 
 
             }
