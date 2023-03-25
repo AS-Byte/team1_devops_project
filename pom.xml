@@ -105,19 +105,6 @@
     </build>
 
 
-    <profiles>
-        <profile>
-            <id>autreDistrib</id>
-            <distributionManagement>
 
-                <snapshotRepository>
-                    <id>snapshots</id>
-                    <name>Internal Snapshots</name>
-                    <url>http://192.168.108.222:8081/repository/maven-snapshots/</url>
-                </snapshotRepository>
-
-            </distributionManagement>
-        </profile>
-    </profiles>
 
 </project>
