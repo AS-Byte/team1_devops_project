@@ -54,7 +54,7 @@ pipeline {
                  [
                      [artifactId: 'team1',
                        classifier: '',
-                        file: "target/team-${mavenPom.version}.war",
+                        file: "target/team1-${mavenPom.version}.war",
                          type: 'war'
                        ]
                  ],
