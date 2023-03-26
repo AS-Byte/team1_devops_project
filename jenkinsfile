@@ -1,49 +1,32 @@
 pipeline {
     agent any
-    tools {
-                // Install the Maven version configured as "M2_HOME" and add it to the path.
-                maven "M2_HOME"
-            }
+   
     stages {
-        stage('Build') {
+        stage('hello') {
             steps {
-                git branch: 'khalil_branch',
-                url: 'https://github.com/AS-Byte/team1_devops_project.git'
+                echo "hello world";
                
-                   }
-                        }
-        stage('Mvn-VERSION') {
-            steps {
-                sh """mvn -version"""
-                  }
-                        }
-
-        stage('Mvn-ClEAN') {
-            steps {
-                 sh """mvn clean"""
-                    }
+             }
+         }
+         stage('MVN-CLEAN') {
+                            steps {
+                                sh """mvn clean"""
                             }
-        stage('Mvn-COMPILE') {
-            steps {
-                  sh """mvn compile"""
-                   }
-                              }
-        stage('Mvn-SONARQUBE') {
-            steps {
-            withSonarQubeEnv(installationName: 'sq2')
-                {sh """mvn sonar:sonar"""}
+                        }
 
-                   }
-                              }
+       stage('MVN-COMPILE') {
+                  steps {
+                                 sh """mvn compile"""
+                                       }
+                                       }
 
+        stage('mvn-SONARQUBE') {
+                    steps {
+                    withSonarQubeEnv('sonarQube'){
+                     sh """mvn sonar:sonar"""
+                    }
 
-       stage('Mvn-NEXUS') {
-            steps {
-                    sh """mvn deploy """
-
-                   }
-                           }
-
-
+                    }
+                    }
     }
-   }
+}
