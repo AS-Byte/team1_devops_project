@@ -16,7 +16,7 @@ pipeline {
         stage('GIT') {
             steps {
                "Getting project from Git";
-               ............................
+               https://github.com/AS-Byte/team1_devops_project.git
              }
          }
          stage('MVN CLEAN') {
