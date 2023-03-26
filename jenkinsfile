@@ -13,6 +13,29 @@ pipeline {
                 sh """mvn -version""";
                
              }
+        stage('GIT') {
+            steps {
+               "Getting project from Git";
+               ............................
+             }
+         }
+         stage('MVN CLEAN') {
+            steps {
+               
+               sh'............................'
+             }
+         }
+         stage('MVN COMPILE') {
+            steps {
+               
+               ............................
+             }
+         }
+         stage('MVN SONARQUBE') {
+            steps {
+               "Getting project from Git";
+               ............................
+             }
          }
     }
 }
