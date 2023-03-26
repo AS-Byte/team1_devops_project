@@ -61,7 +61,7 @@ pipeline {
                  groupId: 'tn.esp',
                  version: "${mavenPom.version}"
             }
-
+               sh """mvn deploy"""
           }
         }
 
