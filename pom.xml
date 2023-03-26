@@ -120,6 +120,27 @@
 
     </build>
 
+    <profiles>
+        <profile>
+            <id>autreDistrib</id>
+            <distributionManagement>
+                <repository>
+                    <id>deployment</id>
+                    <name>Internal Releases</name>
+                    <url>
+                        http://192.168.108.222:8081/repository/Team1-Devops/
+                    </url>
+                </repository>
+                <snapshotRepository>
+                    <id>snapshots</id>
+                    <name>Internal Snapshots</name>
+                    <url>http://192.168.108.222:8081/repository/Team1-Devops/</url>
+                </snapshotRepository>
+
+            </distributionManagement>
+        </profile>
+    </profiles>
+
 
 
 
