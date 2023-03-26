@@ -4,6 +4,14 @@ pipeline {
                 // Install the Maven version configured as "M2_HOME" and add it to the path.
                 maven "M2_HOME"
             }
+            environment {
+                        NEXUS_VERSION = "nexus3"
+                        NEXUS_PROTOCOL = "http"
+                        NEXUS_URL = "http://192.168.43.222:8081/"
+                        NEXUS_REPOSITORY = "Team1-Devops"
+                        NEXUS_CREDENTIAL_ID = "Nexus-Credential"
+                             }
+
 
 
     stages {
@@ -54,12 +62,7 @@ pipeline {
                          type: 'war'
                        ]
             ],
-            credentialsId: 'Nexus-Credential',
             groupId: 'tn.esp',
-            nexusUrl: '192.168.43.222:8081',
-             nexusVersion: 'nexus3',
-            protocol: 'http',
-            repository: 'Team1-Devops',
              version: "${mavenPom.version}"
             }
 
