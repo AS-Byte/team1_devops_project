@@ -39,30 +39,31 @@ pipeline {
 
 
        stage('Upload War To NEXUS') {
-       environment {
-                               NEXUS_VERSION = "nexus3"
-                               NEXUS_PROTOCOL = "http"
-                               NEXUS_URL = "192.168.43.222:8081"
-                               NEXUS_REPOSITORY = "Team1-Devops"
-                               NEXUS_CREDENTIAL_ID = "Nexus-Credential"
-                                    }
-        steps {
-                 script{
 
-                   nexusArtifactUploader artifacts:
-                 [
-                     [artifactId: 'team1',
-                       classifier: '',
-                        file: "target/team1-0.0.1-SNAPSHOT.war",
-                         type: 'war'
-                       ]
-                 ],
-                 groupId: 'tn.esp',
-                 version: '0.0.1-SNAPSHOT'
-            }
+                 steps {
 
-               sh """mvn deploy"""
-          }
+
+                          nexusArtifactUploader artifacts:
+                        [
+                            [artifactId: 'team1',
+                              classifier: '',
+                               file: 'target/team1-0.0.1-SNAPSHOT.war',
+                                type: 'war'
+                              ]
+                        ],
+
+                        CREDENTIAL_ID = 'Nexus-Credential'
+                        groupId: 'tn.esp',
+                        NEXUS_VERSION = "nexus3"
+                        NEXUS_PROTOCOL = 'http'
+                        NEXUS_URL = '192.168.43.222:8081'
+                        NEXUS_REPOSITORY = 'Team1-Devops'
+                        version: '0.0.1-SNAPSHOT'
+                   }
+
+
+
+
         }
 
 
