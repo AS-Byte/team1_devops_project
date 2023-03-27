@@ -47,20 +47,20 @@ pipeline {
                                NEXUS_CREDENTIAL_ID = "Nexus-Credential"
                                     }
         steps {
+                 script{
 
-            script{
-                  def mavenPom = readMavenPom file: 'pom.xml'
                    nexusArtifactUploader artifacts:
                  [
                      [artifactId: 'team1',
                        classifier: '',
-                        file: "target/team1-${mavenPom.version}.war",
+                        file: "target/team1-0.0.1-SNAPSHOT.war",
                          type: 'war'
                        ]
                  ],
                  groupId: 'tn.esp',
-                 version: "${mavenPom.version}"
+                 version: '0.0.1-SNAPSHOT'
             }
+
                sh """mvn deploy"""
           }
         }
