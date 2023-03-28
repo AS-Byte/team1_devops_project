@@ -75,7 +75,6 @@ pipeline {
 
 
                                   groupId: 'tn.esp',
-                                  version: '0.0.1-SNAPSHOT',
                                    NEXUS_URL = '192.168.43.222:8081',
                                    NEXUS_REPOSITORY = 'Team1-Devops',
                                    version: '0.0.1-SNAPSHOT'
