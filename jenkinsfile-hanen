@@ -7,7 +7,7 @@ pipeline {
          environment {
                            NEXUS_VERSION = "nexus3"
                            NEXUS_PROTOCOL = "http"
-                           NEXUS_URL = "192.168.43.222:8081/nexus"
+                           NEXUS_URL = "192.168.43.222:8081"
                            NEXUS_REPOSITORY = "Team1-Devops"
                            NEXUS_CREDENTIAL_ID = "Nexus-Credential"
                          }
@@ -73,7 +73,10 @@ pipeline {
                                             ],
 
                                           groupId: 'tn.esp',
-                                          version: "${mavenPom.version}")
+                                          version: "${mavenPom.version}",
+                                          NEXUS_URL = "192.168.43.222:8081"
+
+                                          )
 
                                         }
                                  }
