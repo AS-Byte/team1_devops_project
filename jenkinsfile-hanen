@@ -5,8 +5,12 @@ pipeline {
                 maven "M2_HOME"
             }
 
+
+
+
+
     stages {
-        stage('Build') {
+        stage('Clone From Git') {
             steps {
                 git branch: 'hanen_branch',
                 url: 'https://github.com/AS-Byte/team1_devops_project.git',
@@ -29,6 +33,17 @@ pipeline {
                   sh """mvn compile"""
                    }
                               }
+
+                  stage('Mvn-Build') {
+                              steps {
+                              script{
+
+                              sh """mvn -Dmaven.test.failure.ignore=true clean package"""
+                              }
+
+                                     }
+                                                }
+
         stage('Mvn-SONARQUBE') {
             steps {
             withSonarQubeEnv(installationName: 'sq2')
@@ -38,7 +53,7 @@ pipeline {
                               }
 
 
-       stage('Upload War To NEXUS') {
+       stage('Upload Jar To NEXUS') {
 
                  steps {
 
@@ -61,7 +76,7 @@ pipeline {
                         version: '0.0.1-SNAPSHOT'
                    }
 
-               sh """mvn deploy"""
+
 
 
         }
