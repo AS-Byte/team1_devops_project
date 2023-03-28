@@ -58,7 +58,8 @@ pipeline {
                  steps {
 
 
-                          nexusArtifactUploader artifacts:
+                          nexusArtifactUploader (
+                          artifacts:
                         [
                             [artifactId: 'team1',
                               classifier: '',
@@ -73,7 +74,7 @@ pipeline {
                         NEXUS_PROTOCOL = 'http',
                         NEXUS_URL = '192.168.43.222:8081',
                         NEXUS_REPOSITORY = 'Team1-Devops',
-                        version: '0.0.1-SNAPSHOT'
+                        version: '0.0.1-SNAPSHOT')
                    }
 
 
