@@ -68,7 +68,7 @@ pipeline {
                         ],
 
                         CREDENTIAL_ID = 'Nexus-Credential'
-                        groupId: 'tn.esp',
+                        groupId: 'tn.esp'
                         NEXUS_VERSION = "nexus3"
                         NEXUS_PROTOCOL = 'http'
                         NEXUS_URL = '192.168.43.222:8081'
