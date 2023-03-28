@@ -54,15 +54,13 @@ pipeline {
 
 
          stage('Upload Jar To NEXUS') {
-              environment {
-                                             NEXUS_VERSION = "nexus3"
-                                             NEXUS_PROTOCOL = "http"
-                                             NEXUS_URL = "192.168.43.222:8081"
-                                             NEXUS_REPOSITORY = "Team1-Devops"
-                                             NEXUS_CREDENTIAL_ID = "Nexus-Credential"
-                                                  }
-
-
+                        environment {
+                                 NEXUS_VERSION = "nexus3"
+                                 NEXUS_PROTOCOL = "http"
+                                 NEXUS_URL = "192.168.43.222:8081"
+                                 NEXUS_REPOSITORY = "Team1-Devops"
+                                 NEXUS_CREDENTIAL_ID = "Nexus-Credential"
+                                     }
             steps {
                script{
 
@@ -77,7 +75,10 @@ pipeline {
 
 
                                   groupId: 'tn.esp',
-                                  version: '0.0.1-SNAPSHOT'
+                                  version: '0.0.1-SNAPSHOT',
+                                   NEXUS_URL = '192.168.43.222:8081',
+                                   NEXUS_REPOSITORY = 'Team1-Devops',
+                                   version: '0.0.1-SNAPSHOT'
                                   )
                                 }
 
