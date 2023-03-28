@@ -52,32 +52,32 @@ pipeline {
                    }
                               }
             stage('Upload Jar To NEXUS') {
+                         environment {
+                                       NEXUS_VERSION = "nexus3"
+                                       NEXUS_PROTOCOL = "http"
+                                       NEXUS_URL = "192.168.43.222:8081"
+                                       NEXUS_REPOSITORY = "Team1-Devops"
+                                       NEXUS_CREDENTIAL_ID = "Nexus-Credential"
+                                      }
+                         steps {
+                                script{
+                                       def mavenPom = readMavenPom file: 'pom.xml'
+                                       nexusArtifactUploader(
+                                        artifacts:
+                                            [
+                                                [ artifactId: 'team1',
+                                                  classifier: '',
+                                                  file: "target/team1-${mavenPom.version}.jar",
+                                                  type: 'jar'
+                                                 ],
+                                            ]
 
+                                          groupId: 'tn.esp',
+                                          version: "${mavenPom.version}")
 
-                        steps {
-
-                        script{
-                               def mavenPom = readMavenPom file: 'pom.xml'
-                               nexusArtifactUploader
-                               artifacts:
-                                   [
-                                     [ artifactId: 'team1',
-                                       classifier: '',
-                                       file: "target/team1-${mavenPom.version}.jar",
-                                       type: 'jar'
-                                   ],
-
-                        credentialsId: 'Nexus-Credential',
-                        groupId: 'tn.esp',
-                        nexusUrl: '192.168.43.222:8081',
-                        nexusVersion: 'nexus3',
-                        protocol: 'http',
-                        repository: 'Team1-Devops',
-                        version: "${mavenPom.version}"
-                        ]
-                        }
-                        }
-          }
+                                        }
+                                 }
+                                           }
 
 
 
