@@ -53,34 +53,46 @@ pipeline {
                               }
 
 
-       stage('Upload Jar To NEXUS') {
+         stage('Upload Jar To NEXUS') {
 
-                 steps {
+            steps {
+               script{
 
-
-                          nexusArtifactUploader (
+                   nexusArtifactUploader (
                           artifacts:
-                        [
-                            [artifactId: 'team1',
-                              classifier: '',
-                               file: 'target/team1-0.0.1-SNAPSHOT.jar',
-                                type: 'jar'
-                              ]
-                        ],
+                             [
+                                 [artifactId: 'team1',
+                                   classifier: '',
+                                  file: 'target/team1-0.0.1-SNAPSHOT.jar',
+                                   type: 'jar' ]
+                              ],
 
-                        CREDENTIAL_ID = 'Nexus-Credential',
-                        groupId: 'tn.esp',
-                        NEXUS_VERSION = "nexus3",
-                        NEXUS_PROTOCOL = 'http',
-                        NEXUS_URL = '192.168.43.222:8081',
-                        NEXUS_REPOSITORY = 'Team1-Devops',
-                        version: '0.0.1-SNAPSHOT')
-                   }
+                                  CREDENTIAL_ID = 'Nexus-Credential',
+                                  groupId: 'tn.esp',
+                                  NEXUS_VERSION = "nexus3",
+                                  NEXUS_PROTOCOL = 'http',
+                                  NEXUS_URL = '192.168.43.222:8081',
+                                  NEXUS_REPOSITORY = 'Team1-Devops',
+                                  version: '0.0.1-SNAPSHOT'
+                                  )
+                                }
+
+                  }
+
+
+                      }
 
 
 
 
-        }
+
+
+
+
+
+
+
+
 
 
 
