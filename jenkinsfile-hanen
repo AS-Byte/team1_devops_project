@@ -69,8 +69,8 @@ pipeline {
                                                   classifier: '',
                                                   file: "target/team1-${mavenPom.version}.jar",
                                                   type: 'jar'
-                                                 ],
-                                            ]
+                                                 ]
+                                            ],
 
                                           groupId: 'tn.esp',
                                           version: "${mavenPom.version}")
