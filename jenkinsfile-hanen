@@ -74,7 +74,7 @@ pipeline {
 
                                           groupId: 'tn.esp',
                                           version: "${mavenPom.version}",
-                                          NEXUS_URL = "192.168.43.222:8081"
+                                          nexusUrl = "http://192.168.108.222:8081/repository/Team1-Devops/"
 
                                           )
 
