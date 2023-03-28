@@ -47,8 +47,8 @@ pipeline {
                         [
                             [artifactId: 'team1',
                               classifier: '',
-                               file: 'target/team1_devops_project-0.0.1-SNAPSHOT.war',
-                                type: 'war'
+                               file: 'target/team1-0.0.1-SNAPSHOT.jar',
+                                type: 'jar'
                               ]
                         ],
 
