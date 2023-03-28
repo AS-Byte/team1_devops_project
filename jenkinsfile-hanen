@@ -4,7 +4,13 @@ pipeline {
                 // Install the Maven version configured as "M2_HOME" and add it to the path.
                 maven "M2_HOME"
             }
-
+         environment {
+                           NEXUS_VERSION = "nexus3"
+                           NEXUS_PROTOCOL = "http"
+                           NEXUS_URL = "192.168.43.222:8081"
+                           NEXUS_REPOSITORY = "Team1-Devops"
+                           NEXUS_CREDENTIAL_ID = "Nexus-Credential"
+                         }
 
 
 
@@ -52,13 +58,7 @@ pipeline {
                    }
                               }
             stage('Upload Jar To NEXUS') {
-                         environment {
-                                       NEXUS_VERSION = "nexus3"
-                                       NEXUS_PROTOCOL = "http"
-                                       NEXUS_URL = "192.168.43.222:8081"
-                                       NEXUS_REPOSITORY = "Team1-Devops"
-                                       NEXUS_CREDENTIAL_ID = "Nexus-Credential"
-                                      }
+
                          steps {
                                 script{
                                        def mavenPom = readMavenPom file: 'pom.xml'
