@@ -55,7 +55,7 @@ pipeline {
             environment {
                                        NEXUS_VERSION = "nexus3"
                                        NEXUS_PROTOCOL = "http"
-                                       NEXUS_URL = "http://192.168.43.222:8081"
+
                                        NEXUS_REPOSITORY = "Team1-Devops"
                                        NEXUS_CREDENTIAL_ID = "Nexus-Credential"
                                      }
@@ -64,6 +64,9 @@ pipeline {
                                 script{
                                        def mavenPom = readMavenPom file: 'pom.xml'
                                        nexusArtifactUploader(
+                                       NEXUS_URL = "192.168.43.222:8081"
+
+
                                         artifacts:
                                             [
                                                 [ artifactId: 'team1',
