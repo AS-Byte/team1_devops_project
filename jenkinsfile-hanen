@@ -52,7 +52,9 @@ pipeline {
                    }
                               }
             stage('Upload Jar To NEXUS') {
+                     environment {
 
+                        NEXUS_CREDENTIAL_ID = "Nexus-Credential"}
 
                          steps {
                                 script{
