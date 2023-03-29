@@ -65,7 +65,7 @@ pipeline {
                                                 protocol:"http",
                                                 nexusUrl:"192.168.43.222:8081",
                                                 groupId: 'tn.esp',
-                                                repository:"Team1-Devops"
+                                                repository:"Team1-Devops",
 
 
 
