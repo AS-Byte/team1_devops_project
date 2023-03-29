@@ -62,10 +62,9 @@ pipeline {
 
                          steps {
                                 script{
+                                       NEXUS_URL = "192.168.43.222:8081"
                                        def mavenPom = readMavenPom file: 'pom.xml'
                                        nexusArtifactUploader(
-                                       NEXUS_URL = "192.168.43.222:8081"
-
 
                                         artifacts:
                                             [
