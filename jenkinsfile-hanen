@@ -52,19 +52,20 @@ pipeline {
                    }
                               }
             stage('Upload Jar To NEXUS') {
-            environment {
-                                       NEXUS_REPOSITORY = "Team1-Devops"
-                                       NEXUS_CREDENTIAL_ID = "Nexus-Credential"
-                                     }
+
 
                          steps {
                                 script{
 
                                        def mavenPom = readMavenPom file: 'pom.xml'
                                        nexusArtifactUploader(
-                                           nexusUrl:"192.168.43.222:8081",
-                                           nexusVersion:"nexus3",
-                                           protocol:"http",
+                                                nexusVersion:"nexus3",
+                                                protocol:"http",
+                                                nexusUrl:"192.168.43.222:8081",
+                                                groupId: 'tn.esp',
+                                                repository:"Team1-Devops",
+                                                credentialId:"Nexus-Credential",
+
 
                                         artifacts:
                                             [
@@ -75,7 +76,7 @@ pipeline {
                                                  ]
                                             ],
 
-                                          groupId: 'tn.esp',
+
                                           version: "${mavenPom.version}",
 
 
