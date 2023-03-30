@@ -6,13 +6,7 @@ pipeline {
             }
 
     stages {
-        stage('Clone From Git') {
-            steps {
-                git branch: 'khalil_branch',
-                url: 'git@github.com:AS-Byte/team1_devops_project.git'
-             
-                   }
-                        }
+      
         stage('Mvn-VERSION') {
             steps {
                 sh """mvn -version"""
