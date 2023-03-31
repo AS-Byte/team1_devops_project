@@ -46,7 +46,19 @@ pipeline {
                               }
 
                                      }
-                                                }
+                                     }
+
+                  stage('Mvn-Test') {
+                                     steps {
+                                           script{
+
+                                          sh """mvn test"""
+                                                   }
+
+                                                 }
+                                       }
+
+
 
         stage('Mvn-SONARQUBE') {
             steps {
