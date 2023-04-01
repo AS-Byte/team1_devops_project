@@ -55,7 +55,7 @@ pipeline {
                         stage('Upload Jar To NEXUS') {
 
                                      steps {
-                                    sh""" mvn clean deploy -Dmaven.test.skip=true"""
+                                    sh""" mvn deploy"""
                                            }}
     }
 }
