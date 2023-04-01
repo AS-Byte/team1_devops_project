@@ -158,13 +158,13 @@
                     <id>deployment</id>
                     <name>Internal Releases</name>
                     <url>
-                        http://192.168.43.110:8081/nexus/content/repository/ProjetDevopsNexusRepo/
+                        http://192.168.43.110:8081/repository/ProjetDevopsNexusRepo/
                     </url>
                 </repository>
                 <snapshotRepository>
                     <id>snapshots</id>
                     <name>Internal Snapshots</name>
-                    <url>http://192.168.43.110:8081/nexus/content/repository/ProjetDevopsNexusRepo/</url>
+                    <url>http://192.168.43.110:8081/repository/ProjetDevopsNexusRepo/</url>
                 </snapshotRepository>
             </distributionManagement>
 
