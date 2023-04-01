@@ -170,7 +170,6 @@
     </build>
 
 
-            <id>autreDistrib</id>
             <distributionManagement>
                 <repository>
                     <id>deployment</id>
