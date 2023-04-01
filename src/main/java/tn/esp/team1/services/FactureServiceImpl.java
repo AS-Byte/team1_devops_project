@@ -2,6 +2,7 @@ package tn.esp.team1.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,8 +72,13 @@ public class FactureServiceImpl implements IFactureService {
 
     @Override
     public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
-        Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).get();
-        return (List<Facture>) fournisseur.getFactures();
+        Optional<Fournisseur> fournisseur = fournisseurRepository.findById(idFournisseur);
+        if(fournisseur.isPresent()){
+            return (List<Facture>) fournisseur.get().getFactures();
+
+        }else{
+            return null;
+        }
     }
 
     @Override
