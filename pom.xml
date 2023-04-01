@@ -169,8 +169,7 @@
         </extensions>
     </build>
 
-    <profiles>
-        <profile>
+
             <id>autreDistrib</id>
             <distributionManagement>
                 <repository>
@@ -190,6 +189,5 @@
 
             </distributionManagement>
 
-        </profile>
-    </profiles>
+
 </project>
