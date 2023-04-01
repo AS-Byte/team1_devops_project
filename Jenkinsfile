@@ -55,7 +55,11 @@ pipeline {
                         stage('Upload Jar To NEXUS') {
 
                                      steps {
-                                    sh""" mvn clean deploy -Dmaven.test.skip=true"""
+                                    sh"""mvn deploy:deploy-file \
+                                           -Dfile=/path/to/a/file \
+                                           -Dpackaging=jar -DgroupId=<aGroup> -DartifactId=<anArtifactId> -Dversion=x.y.z-SNAPSHOT \
+                                           -DrepositoryId=<repoId> \
+                                           -Durl==https://192.168.43.110:8081/content/repositories/ProjetDevopsNexusRepo/"""
                                            }}
     }
 }
