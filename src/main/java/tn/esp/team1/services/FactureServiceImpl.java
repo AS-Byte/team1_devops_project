@@ -2,7 +2,7 @@ package tn.esp.team1.services;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,7 +53,7 @@ public class FactureServiceImpl implements IFactureService {
     @Override
     public void cancelFacture(Long factureId) {
         // Méthode 01
-        //Facture facture = factureRepository.findById(factureId).get();
+
         Facture facture = factureRepository.findById(factureId).orElse(new Facture());
         facture.setArchivee(true);
         factureRepository.save(facture);
@@ -71,7 +71,7 @@ public class FactureServiceImpl implements IFactureService {
 
     @Override
     public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
-        Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
+        Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).get();
         return (List<Facture>) fournisseur.getFactures();
     }
 
