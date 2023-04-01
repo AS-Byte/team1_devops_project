@@ -33,14 +33,7 @@ pipeline {
 
                               }
                     }
-                    stage('GIT') {
-                              steps {
-                                echo:"Getting project from git!";
-                                https://github.com/AS-Byte/team1_devops_project.git
-
-                              }
-                    }
-
+                   
         stage('Mvn-SONARQUBE') {
             steps {
             withSonarQubeEnv(installationName: 'sq2')
