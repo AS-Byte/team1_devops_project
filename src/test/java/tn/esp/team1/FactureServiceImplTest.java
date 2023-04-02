@@ -8,8 +8,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esp.team1.entities.Facture;
+import tn.esp.team1.entities.Fournisseur;
 import tn.esp.team1.repositories.FactureRepository;
+import tn.esp.team1.repositories.FournisseurRepository;
 import tn.esp.team1.services.FactureServiceImpl;
+import tn.esp.team1.services.FournisseurServiceImpl;
 
 import java.util.Optional;
 
@@ -20,9 +23,13 @@ class FactureServiceImplTest {
 
     @Mock
     private FactureRepository factureRepository;
+    @Mock
+    FournisseurRepository fournisseurRepository;
 
     @InjectMocks
     private FactureServiceImpl factureService;
+    @InjectMocks
+    FournisseurServiceImpl fournisseurService;
 
     @Test
     void retreiveFactureTest(){
@@ -31,5 +38,14 @@ class FactureServiceImplTest {
         Facture f = factureService.retrieveFacture(2L);
         assertNotNull(f);
         Assertions.assertEquals(f, facture);
+    }
+
+    @Test
+    void retrieveFournisseurTest(){
+        Fournisseur fournisseur = Fournisseur.builder().libelle("fournisseur1").build();
+        Mockito.when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
+        Fournisseur f = fournisseurService.retrieveFournisseur(2L);
+        assertNotNull(f);
+        Assertions.assertEquals(f, fournisseur);
     }
 }
