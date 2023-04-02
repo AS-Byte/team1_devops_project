@@ -15,8 +15,8 @@
     <description>team1</description>
     <distributionManagement>
         <repository>
-            <id>ProjetDevopsNexusRepo</id>
-            <url>http://192.168.1.244:8081/repository/ProjetDevopsNexusRepo/</url>
+            
+            <url>http://192.168.1.244:8081/repository/maven-releases/</url>     
         </repository>
     </distributionManagement>
     <properties>
