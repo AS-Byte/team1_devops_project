@@ -5,11 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esp.team1.dto.DetailFournisseurDTO;
+import tn.esp.team1.dto.FactureDTO;
+import tn.esp.team1.dto.FournisseurDTO;
 import tn.esp.team1.entities.DetailFournisseur;
+import tn.esp.team1.entities.Facture;
 import tn.esp.team1.entities.Fournisseur;
 import tn.esp.team1.entities.SecteurActivite;
 import tn.esp.team1.repositories.DetailFournisseurRepository;
@@ -29,6 +34,8 @@ public class FournisseurServiceImpl implements IFournisseurService {
     ProduitRepository produitRepository;
     @Autowired
     SecteurActiviteRepository secteurActiviteRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public List<Fournisseur> retrieveAllFournisseurs() {
@@ -40,26 +47,30 @@ public class FournisseurServiceImpl implements IFournisseurService {
     }
 
 
-    public Fournisseur addFournisseur(Fournisseur f /*Master*/) {
-        DetailFournisseur df= new DetailFournisseur();//Slave
+    public FournisseurDTO addFournisseur(FournisseurDTO f /*Master*/) {
+        DetailFournisseurDTO df= new DetailFournisseurDTO();//Slave
         df.setDateDebutCollaboration(new Date()); //util
         //On affecte le "Slave" au "Master"
         f.setDetailFournisseur(df);
-        fournisseurRepository.save(f);
-        return f;
+        Fournisseur fournisseurEntity = modelMapper.map(f, Fournisseur.class);
+        Fournisseur fournisseur = fournisseurRepository.save(fournisseurEntity);
+        return modelMapper.map(fournisseur, FournisseurDTO.class);
+
     }
 
-    private DetailFournisseur  saveDetailFournisseur(Fournisseur f){
-        DetailFournisseur df = f.getDetailFournisseur();
-        detailFournisseurRepository.save(df);
-        return df;
+    private DetailFournisseurDTO  saveDetailFournisseur(FournisseurDTO f){
+        DetailFournisseurDTO df = f.getDetailFournisseur();
+        DetailFournisseur detailFournisseurEntity = modelMapper.map(df, DetailFournisseur.class);
+        DetailFournisseur detailFournisseur = detailFournisseurRepository.save(detailFournisseurEntity);
+        return modelMapper.map(detailFournisseur, DetailFournisseurDTO.class);
     }
 
-    public Fournisseur updateFournisseur(Fournisseur f) {
-        DetailFournisseur df = saveDetailFournisseur(f);
+    public FournisseurDTO updateFournisseur(FournisseurDTO f) {
+        DetailFournisseurDTO df = saveDetailFournisseur(f);
         f.setDetailFournisseur(df);
-        fournisseurRepository.save(f);
-        return f;
+        Fournisseur fournisseurEntity = modelMapper.map(f, Fournisseur.class);
+        Fournisseur fournisseur = fournisseurRepository.save(fournisseurEntity);
+        return modelMapper.map(fournisseur, FournisseurDTO.class);
     }
 
     @Override

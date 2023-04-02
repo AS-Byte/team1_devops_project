@@ -1,5 +1,6 @@
 package tn.esp.team1.services;
 
+import tn.esp.team1.dto.FournisseurDTO;
 import tn.esp.team1.entities.Fournisseur;
 
 import java.util.List;
@@ -9,11 +10,11 @@ public interface IFournisseurService {
 
     List<Fournisseur> retrieveAllFournisseurs();
 
-    Fournisseur addFournisseur(Fournisseur f);
+    FournisseurDTO addFournisseur(FournisseurDTO f);
 
     void deleteFournisseur(Long id);
 
-    Fournisseur updateFournisseur(Fournisseur f);
+    FournisseurDTO updateFournisseur(FournisseurDTO f);
 
     Fournisseur retrieveFournisseur(Long id);
 

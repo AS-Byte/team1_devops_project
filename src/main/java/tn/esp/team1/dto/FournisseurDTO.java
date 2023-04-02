@@ -24,6 +24,6 @@ public class FournisseurDTO {
     private CategorieFournisseur categorieFournisseur;
     private Set<FactureDTO> factures;
     private Set<SecteurActivite> secteurActivites;
-    private DetailFournisseur detailFournisseur;
+    private DetailFournisseurDTO detailFournisseur;
 
 }
