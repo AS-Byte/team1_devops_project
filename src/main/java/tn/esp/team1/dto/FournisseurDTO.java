@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esp.team1.entities.CategorieFournisseur;
-import tn.esp.team1.entities.DetailFournisseur;
+
 import tn.esp.team1.entities.SecteurActivite;
 
 import java.util.Set;

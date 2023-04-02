@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import tn.esp.team1.dto.DetailFournisseurDTO;
-import tn.esp.team1.dto.FactureDTO;
+
 import tn.esp.team1.dto.FournisseurDTO;
 import tn.esp.team1.entities.DetailFournisseur;
-import tn.esp.team1.entities.Facture;
+
 import tn.esp.team1.entities.Fournisseur;
 import tn.esp.team1.entities.SecteurActivite;
 import tn.esp.team1.repositories.DetailFournisseurRepository;
