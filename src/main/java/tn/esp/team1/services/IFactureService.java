@@ -1,5 +1,6 @@
 package tn.esp.team1.services;
 
+import tn.esp.team1.DTO.FactureDTO;
 import tn.esp.team1.entities.Facture;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ public interface IFactureService {
 
     List<Facture> getFacturesByFournisseur(Long idFournisseur);
 
-    Facture addFacture(Facture f);
+    FactureDTO addFacture(FactureDTO f);
 
     void cancelFacture(Long id);
 

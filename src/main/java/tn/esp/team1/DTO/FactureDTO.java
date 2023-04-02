@@ -22,27 +22,20 @@ import tn.esp.team1.entities.Reglement;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FactureDTO implements Serializable {
+public class FactureDTO {
+
+
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFacture;
     private float montantRemise;
     private float montantFacture;
-    @Temporal(TemporalType.DATE)
     private Date dateCreationFacture;
-    @Temporal(TemporalType.DATE)
     private Date dateDerniereModificationFacture;
     private Boolean archivee;
-    @OneToMany(mappedBy = "facture")
-    private Set<DetailFacture> detailsFacture;
-    @ManyToOne
-    @JsonIgnore
-    private Fournisseur fournisseur;
-    @OneToMany(mappedBy="facture")
-    @JsonIgnore
-    private Set<Reglement> reglements;
+    private Set<DetailFactureDTO> detailsFacture;
+    private FournisseurDTO fournisseur;
+    private Set<ReglementDTO> reglements;
 
 
 

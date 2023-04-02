@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esp.team1.DTO.FactureDTO;
 import tn.esp.team1.entities.*;
 import tn.esp.team1.repositories.*;
 
@@ -32,6 +35,9 @@ public class FactureServiceImpl implements IFactureService {
     @Autowired
     ReglementServiceImpl reglementService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     public List<Facture> retrieveAllFactures() {
         List<Facture> factures = factureRepository.findAll();
@@ -42,8 +48,10 @@ public class FactureServiceImpl implements IFactureService {
     }
 
 
-    public Facture addFacture(Facture f) {
-        return factureRepository.save(f);
+    public FactureDTO addFacture(FactureDTO f) {
+        Facture factureEntity = modelMapper.map(f, Facture.class);
+        Facture facture = factureRepository.save(factureEntity);
+        return modelMapper.map(facture, FactureDTO.class);
     }
 
     /*

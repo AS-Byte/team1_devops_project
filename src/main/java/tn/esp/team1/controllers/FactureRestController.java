@@ -43,8 +43,7 @@ public class FactureRestController {
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody FactureDTO fDTO) throws ParseException {
-        Facture f = convertToEntity(fDTO);
+    public FactureDTO addFacture(@RequestBody FactureDTO f) {
         return factureService.addFacture(f);
     }
 
@@ -80,16 +79,5 @@ public class FactureRestController {
             return 0;
         }
     }
-    private FactureDTO convertToDto(Facture facture) {
-        FactureDTO factureDTO = modelMapper.map(facture, FactureDTO.class);
-        return factureDTO;
-    }
-
-    private Facture convertToEntity(FactureDTO factureDTO) throws ParseException {
-        Facture post = modelMapper.map(factureDTO, Facture.class);
-        return post;
-    }
-
-
 
 }
