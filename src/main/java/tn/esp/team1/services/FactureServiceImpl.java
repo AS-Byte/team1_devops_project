@@ -66,11 +66,11 @@ public class FactureServiceImpl implements IFactureService {
     @Override
     public Facture retrieveFacture(Long factureId) {
 
-        Optional<Facture> facture = factureRepository.findById(factureId);//orElse(null);
+        Optional<Facture> facture = factureRepository.findById(factureId);
         if(facture.isPresent()){
             log.info("facture :" + facture);
 
-            return (Facture) facture.get();
+            return facture.get();
 
         }else{
             return null;

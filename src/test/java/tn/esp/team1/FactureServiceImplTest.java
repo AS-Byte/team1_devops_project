@@ -16,7 +16,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertNotNull;
 
 @ExtendWith(MockitoExtension.class)
-public class FactureServiceImplTest {
+class FactureServiceImplTest {
 
     @Mock
     private FactureRepository factureRepository;
@@ -25,7 +25,7 @@ public class FactureServiceImplTest {
     private FactureServiceImpl factureService;
 
     @Test
-    public void retreiveFactureTest(){
+    void retreiveFactureTest(){
         Facture facture = Facture.builder().montantFacture(100).build();
         Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(facture));
         Facture f = factureService.retrieveFacture(2L);
