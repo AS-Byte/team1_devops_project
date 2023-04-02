@@ -179,7 +179,7 @@
                     <id>deployment</id>
                     <name>Internal Releases</name>
                     <url>
-                        http://192.168.108.222:8081/nexus/content/repository/Team1-Devops/
+                        http://192.168.108.222:8081/repository/Team1-Devops
                     </url>
                 </repository>
 
