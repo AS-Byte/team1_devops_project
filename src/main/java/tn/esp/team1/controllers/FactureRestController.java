@@ -1,13 +1,16 @@
 package tn.esp.team1.controllers;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
+import tn.esp.team1.DTO.FactureDTO;
 import tn.esp.team1.entities.Facture;
 import tn.esp.team1.services.IFactureService;
 
@@ -20,6 +23,9 @@ public class FactureRestController {
 
     @Autowired
     IFactureService factureService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     // http://localhost:8089/SpringMVC/facture/retrieve-all-factures
     @GetMapping("/retrieve-all-factures")
@@ -37,8 +43,9 @@ public class FactureRestController {
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture f) {
-         return factureService.addFacture(f);
+    public Facture addFacture(@RequestBody FactureDTO fDTO) throws ParseException {
+        Facture f = convertToEntity(fDTO);
+        return factureService.addFacture(f);
     }
 
     /*
@@ -72,4 +79,17 @@ public class FactureRestController {
         } catch (Exception e) {
             return 0;
         }
-    }}
+    }
+    private FactureDTO convertToDto(Facture facture) {
+        FactureDTO factureDTO = modelMapper.map(facture, FactureDTO.class);
+        return factureDTO;
+    }
+
+    private Facture convertToEntity(FactureDTO factureDTO) throws ParseException {
+        Facture post = modelMapper.map(factureDTO, Facture.class);
+        return post;
+    }
+
+
+
+}
