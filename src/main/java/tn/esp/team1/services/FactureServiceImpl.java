@@ -1,5 +1,6 @@
 package tn.esp.team1.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -65,9 +66,16 @@ public class FactureServiceImpl implements IFactureService {
     @Override
     public Facture retrieveFacture(Long factureId) {
 
-        Facture facture = factureRepository.findById(factureId).orElse(null);
-        log.info("facture :" + facture);
-        return facture;
+        Optional<Facture> facture = factureRepository.findById(factureId);//orElse(null);
+        if(facture.isPresent()){
+            log.info("facture :" + facture);
+
+            return (Facture) facture.get();
+
+        }else{
+            return null;
+        }
+
     }
 
     @Override
@@ -77,7 +85,7 @@ public class FactureServiceImpl implements IFactureService {
             return (List<Facture>) fournisseur.get().getFactures();
 
         }else{
-            return null;
+            return new ArrayList<>();
         }
     }
 
