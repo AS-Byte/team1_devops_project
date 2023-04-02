@@ -2,6 +2,7 @@ package tn.esp.team1.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,12 +77,12 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
     @Override
     public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
-        Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).get();
+        Optional<Fournisseur> fournisseur = fournisseurRepository.findById(idFournisseur);
         SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite).orElse(null);
-        fournisseur.getSecteurActivites().add(secteurActivite);
-        fournisseurRepository.save(fournisseur);
-
-
+        if(fournisseur.isPresent()) {
+            fournisseur.get().getSecteurActivites().add(secteurActivite);
+            fournisseurRepository.save(fournisseur.get());
+        }
     }
 
 
