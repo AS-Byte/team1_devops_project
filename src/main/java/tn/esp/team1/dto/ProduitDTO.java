@@ -1,6 +1,5 @@
-package tn.esp.team1.DTO;
+package tn.esp.team1.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +8,6 @@ import tn.esp.team1.entities.CategorieProduit;
 import tn.esp.team1.entities.DetailFacture;
 import tn.esp.team1.entities.Stock;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 @Getter

@@ -1,15 +1,7 @@
-package tn.esp.team1.DTO;
+package tn.esp.team1.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import tn.esp.team1.entities.Facture;
-import tn.esp.team1.entities.Produit;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.io.Serializable;
 
 @Getter
 @Setter

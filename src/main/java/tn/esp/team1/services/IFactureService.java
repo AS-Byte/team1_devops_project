@@ -1,6 +1,6 @@
 package tn.esp.team1.services;
 
-import tn.esp.team1.DTO.FactureDTO;
+import tn.esp.team1.dto.FactureDTO;
 import tn.esp.team1.entities.Facture;
 
 import java.util.Date;

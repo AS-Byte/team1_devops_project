@@ -1,10 +1,8 @@
-package tn.esp.team1.DTO;
+package tn.esp.team1.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import tn.esp.team1.entities.Facture;
 
-import javax.persistence.*;
 import java.util.Date;
 @Getter
 @Setter
