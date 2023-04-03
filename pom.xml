@@ -158,6 +158,24 @@
 
 
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <preparationGoals>clean install</preparationGoals>
+                </configuration>
+            </plugin>
+
+
+
+
+
+
+
+
+
+
 
    </plugins>
 
@@ -182,6 +200,11 @@
                         http://192.168.108.222:8081/nexus/content/repository/Team1-Devops
                     </url>
                 </repository>
+                <snapshotRepository>
+                    <id>snapshots</id>
+                    <name>Internal Snapshots</name>
+                    <url>http://192.168.108.222:8081/nexus/content/repository/Team1-Devops/</url>
+                </snapshotRepository>
 
             </distributionManagement>
 
