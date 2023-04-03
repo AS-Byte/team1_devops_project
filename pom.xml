@@ -13,7 +13,7 @@
     </parent>
     <groupId>tn.esp</groupId>
     <artifactId>team1</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>team1</name>
     <description>team1</description>
     <properties>
@@ -197,13 +197,12 @@
                     <id>deployment</id>
                     <name>Internal Releases</name>
                     <url>
-                        http://192.168.108.222:8081/nexus/content/repository/Team1-Devops
-                    </url>
+                        http://192.168.108.222:8081/repository/Team1-Devops/</url>
                 </repository>
                 <snapshotRepository>
                     <id>snapshots</id>
                     <name>Internal Snapshots</name>
-                    <url>http://192.168.108.222:8081/nexus/content/repository/Team1-Devops/</url>
+                    <url>http://192.168.108.222:8081/repository/Team1-Devops/</url>
                 </snapshotRepository>
 
             </distributionManagement>
