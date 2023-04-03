@@ -98,8 +98,8 @@ pipeline {
                                                                                      type: pom.packaging],
                                                                                      [artifactId: pom.artifactId,
                                                                                       classifier: '',
-                                                                                      file:"pom.xml",
-                                                                                      type: "pom"
+                                                                                      file:"target/*.${pom.packaging}",
+                                                                                      type: "jar"
                                                                                       ]
                                                                                     ]
                                                                                     );
