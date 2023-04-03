@@ -29,7 +29,7 @@ pipeline {
 
         stage('Mvn-ClEAN') {
             steps {
-                 sh """mvn clean install -P autoInstallPackage -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true"""
+                 sh """mvn clean """
                     }
                             }
         stage('Mvn-COMPILE') {
