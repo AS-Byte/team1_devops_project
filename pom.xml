@@ -95,40 +95,6 @@
 
         </dependency>
 
-
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-settings-builder</artifactId>
-            <version>3.0.3</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-aether-provider</artifactId>
-            <version>3.0.3</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-settings</artifactId>
-            <version>3.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.sonatype.aether</groupId>
-            <artifactId>aether-connector-wagon</artifactId>
-            <version>1.13.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>sisu-guice</artifactId>
-                    <groupId>org.sonatype.sisu</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <dependency>
             <groupId>org.apache.maven.wagon</groupId>
             <artifactId>wagon-http</artifactId>
@@ -136,26 +102,22 @@
         </dependency>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    </dependencies>
+   </dependencies>
     <build>
 
         <pluginManagement>
             <plugins>
+
+
+
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>${maven-deploy-plugin.version}</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -179,9 +141,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
-
             </plugin>
-
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -251,13 +211,9 @@
                     <id>deployment</id>
                     <name>Internal Releases</name>
                     <url>
-                        http://192.168.108.222:8081/repository/Team1-Devops/</url>
+                        http://192.168.108.222:8081/nexus/content/repository/Team1-Devops/</url>
                 </repository>
-                <snapshotRepository>
-                    <id>snapshots</id>
-                    <name>Internal Snapshots</name>
-                    <url>http://192.168.108.222:8081/repository/Team1-Devops/</url>
-                </snapshotRepository>
+
 
 
             </distributionManagement>
