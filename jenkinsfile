@@ -8,8 +8,8 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.1.244:8081"
-        NEXUS_REPOSITORY = "Team1-Devops"
-        NEXUS_CREDENTIAL_ID = "nexus-secret"
+        NEXUS_REPOSITORY = "maven-nexus-repo"
+        NEXUS_CREDENTIAL_ID = "nexus-credential"
     }
 
     stages {
@@ -48,13 +48,6 @@ pipeline {
 
             }
          }
-           
-           
-           
-           
-           
-           
-           
                         
         stage("Publish to Nexus Repository Manager") {
             steps {
