@@ -78,7 +78,7 @@ pipeline {
                            protocol: 'http',
                            nexusUrl: '192.168.215.200',
                            groupId: 'pom.tn.esp',
-                           version: 'pom.0.0.1-SNAPSHOT',
+                           version: 'pom.0.0.1',
                            repository: 'Team1-Devops',
                            credentialsId: 'NEXUS_CRED',
                            artifacts: [
