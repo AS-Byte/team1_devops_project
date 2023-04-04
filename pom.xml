@@ -25,6 +25,8 @@
 
 
 
+
+
     </properties>
     <dependencies>
         <dependency>
@@ -184,16 +186,6 @@
                 </executions>
             </plugin>
 
-
-
-
-
-
-
-
-
-
-
    </plugins>
 
         <extensions>
@@ -205,6 +197,7 @@
         </extensions>
 
     </build>
+
 
     <profiles>
         <profile>
@@ -222,11 +215,11 @@
                     <url>http://192.168.108.222:8081/repository/Team1-Devops/</url>
                 </snapshotRepository>
 
+
             </distributionManagement>
 
         </profile>
     </profiles>
-
 
 
 
