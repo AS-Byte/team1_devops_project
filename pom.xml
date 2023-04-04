@@ -136,7 +136,7 @@
             </executions>
                 <configuration>
                     <serverId>nexus</serverId>
-                    <nexusUrl>http://192.168.101.246:8081/nexus/</nexusUrl>
+                    <nexusUrl>http://192.168.215.200:8081/nexus/</nexusUrl>
                     <skipStaging>true</skipStaging>
                 </configuration>
             </plugin>
