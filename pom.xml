@@ -140,7 +140,7 @@
             </executions>
                 <configuration>
                     <serverId>nexus</serverId>
-                    <nexusUrl>http://192.168.215.200:8081/nexus/</nexusUrl>
+                    <nexusUrl>http://192.168.215.200:8081/</nexusUrl>
                     <skipStaging>true</skipStaging>
                 </configuration>
             </plugin>
@@ -167,4 +167,11 @@
 
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://192.168.215.200:8081/repository/Team1-Devops/</url>
+        </repository>
+    </distributionManagement>
 </project>
