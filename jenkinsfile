@@ -14,12 +14,12 @@ pipeline {
     //}
 
     stages {
-       stage('Clean before clone'){
+       stage('Clean Before Clone'){
             steps{
                 sh """rm -rf *"""
             }
        }
-       stage('Clone from git') {
+       stage('Clone From Git') {
             steps {
                 git branch: 'amine_branch',
                 url: 'https://github.com/AS-Byte/team1_devops_project.git',
@@ -48,7 +48,7 @@ pipeline {
                 }
             }
        }
-       stage('MVN-Test') {
+       stage('MVN-TEST') {
             steps {
                 script{
                     sh """mvn test"""
