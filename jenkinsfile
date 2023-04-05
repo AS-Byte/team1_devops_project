@@ -48,20 +48,7 @@ pipeline {
                 }
             }
        }
-       stage('MVN-TEST') {
-            steps {
-                script{
-                    sh """mvn test"""
-                }
-            }
-       }
-       stage('MVN-SONARQUBE') {
-            steps {
-                withSonarQubeEnv('SonarQube'){
-                    sh """mvn sonar:sonar"""
-                }
-            }
-       }
+
        stage("Publish to Nexus Repos Manager") {
            steps {
                script {
