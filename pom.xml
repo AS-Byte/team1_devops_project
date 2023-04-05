@@ -13,7 +13,7 @@
 
     <groupId>tn.esp</groupId>
     <artifactId>team1</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>team1</name>
     <description>team1</description>
 
@@ -44,11 +44,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
@@ -65,14 +61,40 @@
             <version>3.0.0</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.wagon</groupId>
+            <artifactId>wagon-http</artifactId>
+            <version>2.1</version>
+        </dependency>
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -91,7 +113,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>${maven-deploy-plugin.version}</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -140,7 +165,7 @@
             </executions>
                 <configuration>
                     <serverId>nexus</serverId>
-                    <nexusUrl>http://192.168.215.200:8081/</nexusUrl>
+                    <nexusUrl>http://192.168.215.200:8081/nexus/</nexusUrl>
                     <skipStaging>true</skipStaging>
                 </configuration>
             </plugin>
@@ -167,11 +192,16 @@
 
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>autreDistrib</id>
+            <distributionManagement>
+                <repository>
+                    <id>nexus</id>
+                    <url>http://192.168.215.200:8081/repository/Team1-Devops/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 
-    <distributionManagement>
-        <repository>
-            <id>nexus</id>
-            <url>http://192.168.215.200:8081/repository/Team1-Devops/</url>
-        </repository>
-    </distributionManagement>
 </project>
