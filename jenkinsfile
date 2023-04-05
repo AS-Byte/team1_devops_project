@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+    tools {
+          // Install the Maven version configured as "M2_HOME" and add it to the path.
+          maven 'M2_HOME'
+          jdk 'JAVA_HOME'
+        }
+
+
+    stages {
+       stage('Clean Before Clone'){s
+            steps{
+                sh """rm -rf *"""
+            }
+       }
+       stage('Clone From Git') {
+            steps {
+                git branch: 'amir_branch',
+                url: 'https://github.com/AS-Byte/team1_devops_project.git',
+                credentialsId: '35ad2dec-c781-469e-8b4a-85d92a81ad07'
+            }
+       }
+       stage('MVN-VERSION') {
+            steps {
+                sh """mvn -version"""
+            }
+       }
+       stage('MVN-CLEAN') {
+            steps {
+                sh """mvn clean"""
+            }
+       }
+       stage('MVN-COMPILE') {
+            steps {
+                sh """mvn compile"""
+            }
+       }
+       stage('MVN-BUILD') {
+            steps {
+                script{
+                    sh """mvn -Dmaven.test.failure.ignore=true clean package"""
+                }
+            }
+       }
+       stage('MVN-TEST') {
+            steps {
+                script{
+                    sh """mvn test"""
+                }
+            }
+       }
+
+
+    }
+}
