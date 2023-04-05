@@ -84,7 +84,7 @@ class FactureServiceImplTest {
         Mockito.when(modelMapper.map(fournisseur, FournisseurDTO.class)).thenReturn(fournisseurDTO);
 
         FournisseurDTO result = fournisseurService.addFournisseur(fournisseurDTO);
-        Assertions.assertEquals(result.getIdFournisseur(), 1L);
+        Assertions.assertEquals( 1L,result.getIdFournisseur());
 
     }
 
@@ -108,7 +108,7 @@ class FactureServiceImplTest {
         Mockito.when(detailFournisseurRepository.save(Mockito.any())).thenReturn(dfEntity);
 
         FournisseurDTO result = fournisseurService.updateFournisseur(fournisseurDTO);
-        Assertions.assertEquals(result.getIdFournisseur(), 1L);
+        Assertions.assertEquals( 1L,result.getIdFournisseur());
     }
 
 }

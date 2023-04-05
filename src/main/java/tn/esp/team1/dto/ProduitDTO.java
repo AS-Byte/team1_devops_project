@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tn.esp.team1.entities.CategorieProduit;
-import tn.esp.team1.entities.DetailFacture;
+
 import tn.esp.team1.entities.Stock;
 
 import java.util.Date;
