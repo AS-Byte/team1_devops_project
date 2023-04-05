@@ -18,6 +18,6 @@ public class ReglementDTO {
     private float montantRestant;
     private Boolean payee;
     private Date dateReglement;
-    private Facture facture;
+    private FactureDTO facture;
 
 }

@@ -1,9 +1,6 @@
 package tn.esp.team1.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import tn.esp.team1.entities.CategorieFournisseur;
 
 import tn.esp.team1.entities.SecteurActivite;
@@ -14,6 +11,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class FournisseurDTO {
 
     private static final long serialVersionUID = 1L;
@@ -23,7 +21,7 @@ public class FournisseurDTO {
     private String libelle;
     private CategorieFournisseur categorieFournisseur;
     private Set<FactureDTO> factures;
-    private Set<SecteurActivite> secteurActivites;
+    private Set<SecteurActiviteDTO> secteurActivites;
     private DetailFournisseurDTO detailFournisseur;
 
 }

@@ -24,6 +24,6 @@ public class ProduitDTO {
     private Date dateCreation;
     private Date dateDerniereModification;
     private Stock stock;
-    private Set<DetailFacture> detailFacture;
-    private CategorieProduit categorieProduit;
+    private Set<DetailFactureDTO> detailFacture;
+    private CategorieProduitDTO categorieProduit;
 }

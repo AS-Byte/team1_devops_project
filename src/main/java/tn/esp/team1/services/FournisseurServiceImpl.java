@@ -48,11 +48,12 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 
     public FournisseurDTO addFournisseur(FournisseurDTO f /*Master*/) {
-        DetailFournisseurDTO df= new DetailFournisseurDTO();//Slave
+
+        Fournisseur fournisseurEntity = modelMapper.map(f, Fournisseur.class);
+        DetailFournisseur df = new DetailFournisseur();//Slave
         df.setDateDebutCollaboration(new Date()); //util
         //On affecte le "Slave" au "Master"
-        f.setDetailFournisseur(df);
-        Fournisseur fournisseurEntity = modelMapper.map(f, Fournisseur.class);
+        fournisseurEntity.setDetailFournisseur(df);
         Fournisseur fournisseur = fournisseurRepository.save(fournisseurEntity);
         return modelMapper.map(fournisseur, FournisseurDTO.class);
 
