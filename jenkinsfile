@@ -24,8 +24,8 @@ pipeline {
        stage('MVN-BUILD') {
             steps {
                 script{
-                    sh """mvn -Dmaven.test.failure.ignore=true clean package"""
                     sh """mvn clean"""
+                    sh """mvn -Dmaven.test.failure.ignore=true clean package"""
                 }
             }
        }
