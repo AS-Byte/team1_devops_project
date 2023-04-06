@@ -4,7 +4,7 @@ pipeline {
           // Install the Maven version configured as "M2_HOME" and add it to the path.
           maven 'MAVEN_HOME'
           jdk 'JAVA_HOME'
-        }
+    }
     environment {
            NEXUS_VERSION = "nexus3"
            NEXUS_PROTOCOL = "http"
@@ -12,7 +12,6 @@ pipeline {
            NEXUS_REPOSITORY = "Team1-Devops"
            NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
     }
-
     stages {
        stage('Clone From Git') {
             steps {
@@ -77,10 +76,10 @@ pipeline {
            steps {
                sh 'sudo docker login -u asbyte -p Sixr95HC2zASp9E'
                script {
-                                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_pwd') {
-                                     def dockerImage = docker.image('my-docker-image')
-                                     dockerImage.tag("${env.BUILD_NUMBER}")
-                                 }
+                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_pwd') {
+                         def dockerImage = docker.image('my-docker-image')
+                         dockerImage.tag("${env.BUILD_NUMBER}")
+               }
 
            }
        }
@@ -114,27 +113,27 @@ pipeline {
              }
          }
      }
+      o   Récupérer le projet à partir de gitHub/gitLab
+
+      o   Créer le livrable du projet
+
+      o   Lancer les tests unitaires
+
+      o   Lancer le test de qualité du code (SonarQube)
+
+      o   Déposer le livrable sur Nexus
+
+      o   Build de l’image (partie spring)
+
+      o   Création du livrable Spring à partir du fichier DockerFile
+
+      o   Déposer l'image créée sur DockerHub
+
+      o   Lancer simultanément en utilisant docker-compose l'image contenant le livrable spring et l'image MySQL
+
+      o   Tester les services de l'application avec  postman ou « Swagger ». Un simple ajout d'une ligne suivi d'un get de l'élément ajouté est suffisant
       */
     }
 }
 
-/*
-o   Récupérer le projet à partir de gitHub/gitLab
 
-o   Créer le livrable du projet
-
-o   Lancer les tests unitaires
-
-o   Lancer le test de qualité du code (SonarQube)
-
-o   Déposer le livrable sur Nexus
-
-o   Build de l’image (partie spring)
-
-o   Création du livrable Spring à partir du fichier DockerFile
-
-o   Déposer l'image créée sur DockerHub
-
-o   Lancer simultanément en utilisant docker-compose l'image contenant le livrable spring et l'image MySQL
-
-o   Tester les services de l'application avec  postman ou « Swagger ». Un simple ajout d'une ligne suivi d'un get de l'élément ajouté est suffisant */
