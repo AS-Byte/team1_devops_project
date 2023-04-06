@@ -73,34 +73,47 @@ pipeline {
                        sh 'sudo docker build -t my-docker-image .'
                    }
                }
-               stage('Tag Docker image') {
-                   steps {
-                       sh '''
-                           docker login -u <asbyte> -p <Sixr95HC2zASp9E>
-                           dockerImage=$(docker images my-docker-image -q)
-                           docker tag $dockerImage $dockerImage-$BUILD_NUMBER
-                           docker push $dockerImage-$BUILD_NUMBER
-                       '''
-                   }
-               }
+       stage('Tag Docker image') {
+           steps {
+               sh '''
+                   docker login -u <amine.oueslati@esprit.tn> -p <Sixr95HC2zASp9E>
+                   dockerImage=$(docker images my-docker-image -q)
+                   docker tag $dockerImage $dockerImage-$BUILD_NUMBER
+                   docker push $dockerImage-$BUILD_NUMBER
+               '''
+           }
+       }
 
-               stage('Push Docker image') {
-                   steps {
-                       script {
-                           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_pwd') {
-                               def dockerImage = docker.image('my-docker-image')
-                               dockerImage.push("${env.BUILD_NUMBER}")
-                           }
-                       }
-                   }
-               }
-       /* stage('Build docker image') {
+
+       /*
+       stage('Build docker image') {
            steps{
                script {
                    sh 'docker build .'
                }
            }
-       } */
+       }
+       stage('Tag Docker image') {
+          steps {
+              script {
+                  docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_pwd') {
+                      def dockerImage = docker.image('my-docker-image')
+                      dockerImage.tag("${env.BUILD_NUMBER}")
+                  }
+              }
+          }
+      }
+      stage('Push Docker image') {
+         steps {
+             script {
+                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_pwd') {
+                     def dockerImage = docker.image('my-docker-image')
+                     dockerImage.push("${env.BUILD_NUMBER}")
+                 }
+             }
+         }
+     }
+      */
     }
 }
 
