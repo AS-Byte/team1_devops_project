@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,5 +19,5 @@ public interface ReglementRepository extends CrudRepository<Reglement, Long>{
 	
 	@Query("SELECT sum(r.montantPaye) FROM Reglement r where  r.dateReglement between :startDate"
 			+ " and :endDate and r.facture.archivee=false")
-	float getChiffreAffaireEntreDeuxDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+	float getChiffreAffaireEntreDeuxDate(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 }

@@ -1,5 +1,6 @@
 package tn.esp.team1.controllers;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -70,8 +71,8 @@ public class FactureRestController {
 
     @GetMapping(value = "/pourcentageRecouvrement/{startDate}/{endDate}")
     public float pourcentageRecouvrement(
-            @PathVariable(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
-            @PathVariable(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate) {
+            @PathVariable(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @PathVariable(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
         try {
             return factureService.pourcentageRecouvrement(startDate, endDate);
         } catch (Exception e) {

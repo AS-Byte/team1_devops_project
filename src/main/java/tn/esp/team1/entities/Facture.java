@@ -1,6 +1,7 @@
 package tn.esp.team1.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -28,10 +29,10 @@ public class Facture implements Serializable {
     private Long idFacture;
     private float montantRemise;
     private float montantFacture;
-    @Temporal(TemporalType.DATE)
-    private Date dateCreationFacture;
-    @Temporal(TemporalType.DATE)
-    private Date dateDerniereModificationFacture;
+
+    private LocalDate dateCreationFacture;
+
+    private LocalDate dateDerniereModificationFacture;
     private Boolean archivee;
     @OneToMany(mappedBy = "facture")
     private Set<DetailFacture> detailsFacture;

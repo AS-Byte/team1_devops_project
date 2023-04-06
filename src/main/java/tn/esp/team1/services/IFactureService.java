@@ -3,6 +3,7 @@ package tn.esp.team1.services;
 import tn.esp.team1.dto.FactureDTO;
 import tn.esp.team1.entities.Facture;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface IFactureService {
 
     void assignOperateurToFacture(Long idOperateur, Long idFacture);
 
-    float pourcentageRecouvrement(Date startDate, Date endDate);
+    float pourcentageRecouvrement(LocalDate startDate, LocalDate endDate);
 
 }
 

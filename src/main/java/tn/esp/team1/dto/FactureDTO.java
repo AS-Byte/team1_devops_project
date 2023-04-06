@@ -1,5 +1,6 @@
 package tn.esp.team1.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -18,8 +19,8 @@ public class FactureDTO {
     private Long idFacture;
     private float montantRemise;
     private float montantFacture;
-    private Date dateCreationFacture;
-    private Date dateDerniereModificationFacture;
+    private LocalDate dateCreationFacture;
+    private LocalDate dateDerniereModificationFacture;
     private Boolean archivee;
     private Set<DetailFactureDTO> detailsFacture;
     private FournisseurDTO fournisseur;

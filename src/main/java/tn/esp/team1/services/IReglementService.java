@@ -2,6 +2,7 @@ package tn.esp.team1.services;
 
 import tn.esp.team1.entities.Reglement;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,6 @@ public interface IReglementService {
 	Reglement addReglement(Reglement r);
 	Reglement retrieveReglement(Long id);
 	List<Reglement> retrieveReglementByFacture(Long idFacture);
-	float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate); 
+	float getChiffreAffaireEntreDeuxDate(LocalDate startDate, LocalDate endDate);
 
 }

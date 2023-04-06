@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import tn.esp.team1.dto.DetailFournisseurDTO;
+import tn.esp.team1.dto.FactureDTO;
 import tn.esp.team1.dto.FournisseurDTO;
 import tn.esp.team1.entities.DetailFournisseur;
 import tn.esp.team1.entities.Facture;
@@ -31,19 +32,12 @@ class FactureServiceImplTest {
 
     @Mock
     private FactureRepository factureRepository;
-    @Mock
-    FournisseurRepository fournisseurRepository;
-
-    @Mock
-    DetailFournisseurRepository detailFournisseurRepository;
-
-    @Mock
-    private ModelMapper modelMapper;
 
     @InjectMocks
     private FactureServiceImpl factureService;
-    @InjectMocks
-    FournisseurServiceImpl fournisseurService;
+
+    @Mock
+    private ModelMapper modelMapper;
 
     @Test
     void retreiveFactureTest(){
@@ -55,60 +49,30 @@ class FactureServiceImplTest {
     }
 
     @Test
-    void retrieveFournisseurTest(){
-        Fournisseur fournisseur = Fournisseur.builder().libelle("fournisseur1").build();
-        Mockito.when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
-        Fournisseur f = fournisseurService.retrieveFournisseur(2L);
-        assertNotNull(f);
-        Assertions.assertEquals(f, fournisseur);
-    }
-
-    @Test
-    void retrieveAllFournisseursTest(){
-        Fournisseur fournisseur = Fournisseur.builder().libelle("fournisseur1").build();
+    void retrieveAllFacturesTest(){
+        Facture facture = Facture.builder().montantFacture(100).build();
         List list = new ArrayList<>();
-        list.add(fournisseur);
-        Mockito.when(fournisseurRepository.findAll()).thenReturn(list);
-        List fournisseurs =fournisseurService.retrieveAllFournisseurs();
-        Assertions.assertEquals(list, fournisseurs);
+        list.add(facture);
+        Mockito.when(factureRepository.findAll()).thenReturn(list);
+        List factures =factureService.retrieveAllFactures();
+        Assertions.assertEquals(list, factures);
 
     }
 
     @Test
-    void addFournisseurTest(){
-        Fournisseur fournisseur = Fournisseur.builder().libelle("fournisseur1").build();
-        Mockito.when(fournisseurRepository.save(Mockito.any())).thenReturn(fournisseur);
+    void addFactureTest(){
+        Facture facture = Facture.builder().montantFacture(100).build();
+        Mockito.when(factureRepository.save(Mockito.any())).thenReturn(facture);
 
-        FournisseurDTO fournisseurDTO = FournisseurDTO.builder().idFournisseur(1L).build();
-        Mockito.when(modelMapper.map(fournisseurDTO, Fournisseur.class)).thenReturn(fournisseur);
-        Mockito.when(modelMapper.map(fournisseur, FournisseurDTO.class)).thenReturn(fournisseurDTO);
+        FactureDTO factureDTO = FactureDTO.builder().idFacture(1L).build();
+        Mockito.when(modelMapper.map(factureDTO, Facture.class)).thenReturn(facture);
+        Mockito.when(modelMapper.map(facture, FactureDTO.class)).thenReturn(factureDTO);
 
-        FournisseurDTO result = fournisseurService.addFournisseur(fournisseurDTO);
-        Assertions.assertEquals( 1L,result.getIdFournisseur());
+        FactureDTO result = factureService.addFacture(factureDTO);
+        Assertions.assertEquals( 1L,result.getIdFacture());
 
     }
 
-    @Test
-    void updateFournisseurTest(){
 
-        Fournisseur fournisseur = Fournisseur.builder().libelle("fournisseur1").build();
-        fournisseur.setDetailFournisseur(DetailFournisseur.builder().idDetailFournisseur(200L).build());
-        Mockito.when(fournisseurRepository.save(Mockito.any())).thenReturn(fournisseur);
-
-        FournisseurDTO fournisseurDTO = FournisseurDTO.builder().idFournisseur(1L).build();
-        fournisseurDTO.setDetailFournisseur(DetailFournisseurDTO.builder().idDetailFournisseur(200L).build());
-
-        Mockito.when(modelMapper.map(fournisseurDTO, Fournisseur.class)).thenReturn(fournisseur);
-        Mockito.when(modelMapper.map(fournisseur, FournisseurDTO.class)).thenReturn(fournisseurDTO);
-
-        DetailFournisseurDTO df = fournisseurDTO.getDetailFournisseur();
-        DetailFournisseur dfEntity = fournisseur.getDetailFournisseur();
-        Mockito.when(modelMapper.map(dfEntity, DetailFournisseurDTO.class)).thenReturn(df);
-        Mockito.when(modelMapper.map(df, DetailFournisseur.class)).thenReturn(dfEntity);
-        Mockito.when(detailFournisseurRepository.save(Mockito.any())).thenReturn(dfEntity);
-
-        FournisseurDTO result = fournisseurService.updateFournisseur(fournisseurDTO);
-        Assertions.assertEquals( 1L,result.getIdFournisseur());
-    }
 
 }

@@ -6,6 +6,7 @@ import tn.esp.team1.repositories.ReglementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class ReglementServiceImpl implements IReglementService {
 	}
 
 	@Override
-	public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
+	public float getChiffreAffaireEntreDeuxDate(LocalDate startDate, LocalDate endDate) {
 		return reglementRepository.getChiffreAffaireEntreDeuxDate( startDate, endDate);
 	}
 

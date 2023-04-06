@@ -1,5 +1,6 @@
 package tn.esp.team1.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,7 +110,7 @@ public class FactureServiceImpl implements IFactureService {
     }
 
     @Override
-    public float pourcentageRecouvrement(Date startDate, Date endDate) {
+    public float pourcentageRecouvrement(LocalDate startDate, LocalDate endDate) {
         float totalFacturesEntreDeuxDates = factureRepository.getTotalFacturesEntreDeuxDates(startDate,endDate);
         float totalRecouvrementEntreDeuxDates =reglementService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
         return (totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
