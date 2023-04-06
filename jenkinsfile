@@ -30,12 +30,12 @@ pipeline {
             }
        }
 
-       /*
-       stage("Publish to Nexus Repos Manager") {
+
+       /* stage("Publish to Nexus Repos Manager") {
            steps {
                script {
                    pom = readMavenPom file: "pom.xml";
-                   filesByGlob = findFiles(glob: "target *//*.${pom.packaging}");
+                   filesByGlob = findFiles(glob: "target *//*  *//*.${pom.packaging}");
                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                    artifactPath = filesByGlob[0].path;
                    artifactExists = fileExists artifactPath;
@@ -67,8 +67,8 @@ pipeline {
                    }
                }
            }
-       }
-       */
+       } */
+
 
        stage('Build Docker image') {
                    steps {
@@ -87,9 +87,7 @@ pipeline {
            }
        }
 
-
-       /*
-       stage('Build docker image') {
+       /* stage('Build docker image') {
            steps{
                script {
                    sh 'docker build .'
@@ -135,6 +133,6 @@ pipeline {
       o   Lancer simultanément en utilisant docker-compose l'image contenant le livrable spring et l'image MySQL
 
       o   Tester les services de l'application avec  postman ou « Swagger ». Un simple ajout d'une ligne suivi d'un get de l'élément ajouté est suffisant
-      */
+       */
     }
 }
