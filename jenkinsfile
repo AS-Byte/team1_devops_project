@@ -76,6 +76,7 @@ pipeline {
        stage('Tag Docker image') {
            steps {
                sh '''
+                   sudo usermod -aG docker jenkins
                    sudo docker login -u asbyte -p Sixr95HC2zASp9E
                    dockerImage=\$(docker images my-docker-image -q)
                    sudo docker tag \$dockerImage \$dockerImage-\$BUILD_NUMBER
