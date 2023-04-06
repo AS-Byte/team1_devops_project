@@ -40,7 +40,7 @@ pipeline {
                 script {sh 'docker login -u asbyte -p Sixr95HC2zASp9E'
                         dockerImage = sh(script: 'docker images my-docker-image -q', returnStdout: true).trim()
                         sh "docker tag $dockerImage $dockerImage-$BUILD_NUMBER"
-                        sh "docker push $dockerImage-$BUILD_NUMBER"
+                        sh "docker push docker.io/asbyte/$dockerImage-$BUILD_NUMBER"
                 }
            }
        }
