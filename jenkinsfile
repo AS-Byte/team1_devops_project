@@ -70,11 +70,7 @@ pipeline {
 
        stage('Build Docker image') {
                    steps {
-                       script {
-                           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_pwd') {
-                               def dockerImage = docker.build('my-docker-image')
-                           }
-                       }
+                       sh 'docker build -t my-docker-image .'
                    }
                }
                stage('Tag Docker image') {
@@ -97,7 +93,6 @@ pipeline {
                        }
                    }
                }
-
        /* stage('Build docker image') {
            steps{
                script {
