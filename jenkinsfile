@@ -78,9 +78,9 @@ pipeline {
                sh '''
                    sudo usermod -aG docker jenkins
                    sudo docker login -u asbyte -p Sixr95HC2zASp9E
-                   dockerImage=\$(docker images my-docker-image -q)
-                   sudo docker tag \$dockerImage \$dockerImage-\$BUILD_NUMBER
-                   sudo docker push \$dockerImage-\$BUILD_NUMBER
+                   dockerImage=$(docker images my-docker-image -q)
+                   sudo docker tag $dockerImage $dockerImage-$BUILD_NUMBER
+                   sudo docker push $dockerImage-$BUILD_NUMBER
                '''
            }
        }
