@@ -1,6 +1,5 @@
 FROM openjdk:11-jdk-slim
-RUN mkdir /app
-COPY target/*.jar /app
+COPY target/*.jar /app/app.jar
 WORKDIR /app
 EXPOSE 8080
-CMD ["java", "-jar", "/app/*.jar"]
+CMD ["java", "-jar", "app.jar"]
