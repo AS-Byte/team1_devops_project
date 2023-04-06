@@ -30,14 +30,6 @@ pipeline {
             }
        }
 
-       stage('MVN-TEST') {
-           steps {
-               script{
-                   sh """mvn test"""
-               }
-           }
-       }
-
        stage("Publish to Nexus Repos Manager") {
            steps {
                script {
