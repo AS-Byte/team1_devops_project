@@ -76,10 +76,10 @@ pipeline {
        stage('Tag Docker image') {
            steps {
                sh '''
-                   docker login -u amine.oueslati@esprit.tn -p Sixr95HC2zASp9E
-                   dockerImage=\$(docker images my-docker-image -q)
-                   docker tag \$dockerImage \$dockerImage-\$BUILD_NUMBER
-                   docker push \$dockerImage-\$BUILD_NUMBER
+                   sudo docker login -u amine.oueslati@esprit.tn -p Sixr95HC2zASp9E
+                   sudo dockerImage=\$(docker images my-docker-image -q)
+                   sudo docker tag \$dockerImage \$dockerImage-\$BUILD_NUMBER
+                   sudo docker push \$dockerImage-\$BUILD_NUMBER
                '''
            }
        }
