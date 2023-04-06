@@ -20,6 +20,7 @@ pipeline {
                 credentialsId: 'git_pwd_pat'
             }
        }
+
        stage('MVN-BUILD') {
             steps {
                 script{
@@ -28,7 +29,8 @@ pipeline {
                 }
             }
        }
-/*
+
+       /*
        stage("Publish to Nexus Repos Manager") {
            steps {
                script {
@@ -65,7 +67,8 @@ pipeline {
                    }
                }
            }
-       } */
+       }
+       */
 
        stage('Build Docker image') {
                    steps {
@@ -135,5 +138,3 @@ pipeline {
       */
     }
 }
-
-
