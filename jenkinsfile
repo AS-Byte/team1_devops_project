@@ -71,7 +71,7 @@ pipeline {
        stage('Build docker image') {
            steps{
                script {
-                   sh 'docker build -t as-byte/team1_devops_project'
+                   sh 'docker build .'
                }
            }
        }
