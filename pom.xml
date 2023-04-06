@@ -169,6 +169,7 @@
                 <version>2.10</version>
             </extension>
         </extensions>
+        <finalName>spring-boot-docker</finalName>
     </build>
 
     <profiles>

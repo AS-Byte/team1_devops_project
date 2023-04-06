@@ -22,7 +22,7 @@ import java.util.Optional;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Slf4j
 @EnableAutoConfiguration
-@ContextConfiguration(classes = {FactureRepository.class}) //h2 embarqué
+@ContextConfiguration(classes = {FactureRepository.class, FournisseurRepository.class}) //h2 embarqué
 public class FactureRepositoryTest {
 
     @Autowired
