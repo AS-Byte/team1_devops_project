@@ -78,7 +78,7 @@ pipeline {
                sh """sudo docker login -u asbyte -p Sixr95HC2zASp9E /
                dockerImage=$(docker images my-docker-image -q)/
                docker tag $dockerImage $dockerImage-$BUILD_NUMBER/
-               docker push $dockerImage-$BUILD_NUMBER
+               docker push $dockerImage-$BUILD_NUMBER"""
 
            }
        }
