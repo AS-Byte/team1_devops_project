@@ -38,9 +38,10 @@ pipeline {
        stage('Tag Docker image') {
            steps {
                 script {sh 'docker login -u asbyte -p Sixr95HC2zASp9E'
-                        dockerImage = sh(script: 'docker images my-docker-image -q', returnStdout: true).trim()
-                        sh "docker tag $dockerImage $dockerImage-$BUILD_NUMBER"
-                        sh "docker push docker.io/asbyte/$dockerImage-$BUILD_NUMBER"
+                        def dockerImage = sh(script: 'docker images my-docker-image --format "{{.Repository}}:{{.Tag}}"', returnStdout: true).trim()
+                        def taggedImage = "${dockerImage}-${BUILD_NUMBER}"
+                        sh "docker tag ${dockerImage} ${taggedImage}"
+                        sh "docker push ${taggedImage}"
                 }
            }
        }
