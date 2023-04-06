@@ -1,5 +1,6 @@
+FROM openjdk:11-jdk-slim
 RUN groupadd -g 999 docker \
-    && usermod -aG docker jenkinsFROM openjdk:11-jdk-slim
+    && usermod -aG docker jenkins
 COPY target/*.jar /
 WORKDIR /app
 EXPOSE 8080
