@@ -3,7 +3,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tn.esp.team1.entities.CategorieProduit;
 import tn.esp.team1.entities.Produit;
@@ -19,9 +21,10 @@ import java.util.List;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
 @Slf4j
+@EnableAutoConfiguration
+@ContextConfiguration(classes = {ProduitRepository.class, CategorieProduitRepository.class})
 class Team1ApplicationTests {
-
-    /*@Autowired
+    @Autowired
     ProduitRepository produitRepository;
     @Autowired
     CategorieProduitRepository categorieProduitRepository;
@@ -98,5 +101,5 @@ class Team1ApplicationTests {
         log.info(lstCats.size()+"");
         Assertions.assertTrue(lstCats.size() > 0);
 
-    }*/
+    }
 }
