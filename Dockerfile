@@ -1,4 +1,5 @@
-FROM openjdk:11
-COPY target/spring-boot-docker.jar spring-boot-docker.jar
+FROM openjdk:11-jdk-slim
+COPY target/springboot-docker.jar springboot-docker.jar
+WORKDIR /app
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/spring-boot-docker.jar"]
+CMD ["java", "-jar", "/app/springboot-docker.jar"]

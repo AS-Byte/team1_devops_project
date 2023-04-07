@@ -25,7 +25,7 @@ pipeline {
 
            stage('MVN-CLEAN') {
                 steps {
-                    sh """mvn clean"""
+                    sh """mvn clean install"""
                 }
            }
 
@@ -94,6 +94,27 @@ pipeline {
                                                    }
 
                                        }
+
+
+stage('Build Docker image') {
+                                 steps {
+                                     sh 'docker build -t nadagharbi/my-image .'
+                                 }
+                             }
+
+                             stage('Push image to hub'){
+                                                          steps{
+                                                          withCredentials([string(credentialsId:"dockerhub-pwd", variable: "dockerhubpwd")]){
+                                                          sh 'docker login -u nadagharbi -p ${dockerhubpwd}'
+                                                          }
+                                                          sh 'docker push nadagharbi/my-image'
+                                                          }
+                                                          }
+
+
+
+
+
 
     }
 }
