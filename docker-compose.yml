@@ -2,7 +2,7 @@ version: "3"
 services:
   springboot-image:
     image: nadagharbi/projet-devops
-    container_name: projet-devops
+    container_name: spring container
     command: tail -F anything
     depends_on:
       - mysqldb
@@ -11,7 +11,7 @@ services:
     restart: always
   mysqldb:
     image: mysql
-    container_name: mysql
+    container_name: mysql container
     ports:
       - 3307:3306
     restart: always
