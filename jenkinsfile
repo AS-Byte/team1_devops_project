@@ -14,7 +14,7 @@ pipeline {
     }
 
     stages {
-       stage('Clone From Git') {
+       stage('Connect to Git') {
             steps {
                 git branch: 'amine_branch',
                 url: 'https://github.com/AS-Byte/team1_devops_project.git',
@@ -32,16 +32,14 @@ pipeline {
 
        stage('Build Docker image') {
                    steps {
-                       sh 'sudo docker build -t my-docker-image .'
+                       sh 'docker build -t amine/my-image .'
                    }
                }
-       stage('Tag Docker image') {
+       stage('Push Docker image to hub') {
            steps {
                 script {sh 'docker login -u asbyte -p Sixr95HC2zASp9E'
                         def dockerImage = sh(script: 'docker images my-docker-image --format "{{.Repository}}:{{.Tag}}"', returnStdout: true).trim()
-                        def taggedImage = "https://index.docker.io/v1/${dockerImage}-${BUILD_NUMBER}"
-                        sh "docker tag ${dockerImage} ${taggedImage}"
-                        sh "docker push ${taggedImage}"
+                        sh "docker push amine/my-image"
                 }
            }
        }
@@ -143,4 +141,7 @@ o   Déposer l'image créée sur DockerHub
 o   Lancer simultanément en utilisant docker-compose l'image contenant le livrable spring et l'image MySQL
 
 o   Tester les services de l'application avec  postman ou « Swagger ». Un simple ajout d'une ligne suivi d'un get de l'élément ajouté est suffisant
+
+def taggedImage = "https://index.docker.io/v1/${dockerImage}-${BUILD_NUMBER}"
+                        sh "docker tag ${dockerImage} ${taggedImage}"
 */

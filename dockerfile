@@ -1,6 +1,5 @@
 FROM openjdk:11-jdk-slim
-RUN mkdir -p /app
-COPY target/team1.jar /app
+COPY target/springboot-docker.jar springboot-docker.jar
 WORKDIR /app
 EXPOSE 8080
-CMD ["java", "-jar", "/app/team1.jar"]
+CMD ["java", "-jar", "/app/springboot-docker.jar"]
