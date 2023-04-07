@@ -1,0 +1,18 @@
+version: "2"
+services:
+  springboot-image:
+    image: nadagharbi/devops-image
+    command: tail -F anything
+    depends_on:
+      - mysqldb
+    ports:
+      - 9001:9001
+  mysqldb:
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: projetdevops
+      MYSQL_USER: nada
+      MYSQL_PASSWORD: nada
+      MYSQL_ROOT_PASSWORD: nada
