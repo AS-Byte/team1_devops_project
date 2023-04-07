@@ -7,12 +7,14 @@ services:
     depends_on:
       - mysqldb
     ports:
-      - 9001:9001
+      - 8086:8086
+    restart: always
   mysqldb:
     image: mysql
     container_name: mysql
     ports:
       - 3307:3306
+    restart: always
     environment:
       MYSQL_DATABASE: projetdevops
       MYSQL_USER: nada
