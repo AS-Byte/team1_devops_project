@@ -43,6 +43,16 @@ pipeline {
                 }
             }
 
+            stage('Mvn-Test') {
+                                                 steps {
+                                                       script{
+
+                                                      sh """mvn test"""
+                                                               }
+
+                                                             }
+                                                   }
+
             stage('mvn-SONARQUBE') {
                  steps {
                     withSonarQubeEnv('sonarQube'){
@@ -111,11 +121,11 @@ pipeline {
                                     }
                                  }
 
-                                  stage('docker-compose'){
+                                 /* stage('docker-compose'){
                                      steps {
                                         sh 'docker-compose up'
                                      }
-                                  }
+                                  }*/
 
 
 
