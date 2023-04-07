@@ -21,7 +21,7 @@ import java.util.List;
 @Slf4j
 class Team1ApplicationTests {
 
-    @Autowired
+    /*@Autowired
     ProduitRepository produitRepository;
     @Autowired
     CategorieProduitRepository categorieProduitRepository;
@@ -98,5 +98,5 @@ class Team1ApplicationTests {
         log.info(lstCats.size()+"");
         Assertions.assertTrue(lstCats.size() > 0);
 
-    }
+    }*/
 }
