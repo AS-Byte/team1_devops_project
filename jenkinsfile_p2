@@ -29,6 +29,8 @@ pipeline {
                        }
                   }
 
+
+
        stage("Publish to Nexus Repos Manager") {
                   steps {
                       script {
