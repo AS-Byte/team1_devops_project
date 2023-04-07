@@ -29,7 +29,20 @@ pipeline {
                        }
                   }
 
-
+       stage('MVN-BUILD') {
+                   steps {
+                       script{
+                           sh """mvn -Dmaven.test.failure.ignore=true clean package"""
+                       }
+                   }
+              }
+              stage('MVN-TEST') {
+                  steps {
+                      script{
+                          sh """mvn test"""
+                      }
+                  }
+              }
 
        stage("Publish to Nexus Repos Manager") {
                   steps {
