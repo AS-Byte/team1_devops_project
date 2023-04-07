@@ -12,6 +12,7 @@ import tn.esp.team1.entities.SecteurActivite;
 import tn.esp.team1.repositories.ReglementRepository;
 import tn.esp.team1.repositories.SecteurActiviteRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
@@ -28,12 +29,9 @@ class Team1ApplicationTests {
 
 
     SecteurActivite secteur = SecteurActivite.builder().codeSecteurActivite("SEC1").libelleSecteurActivite("Industrie").build();
-    Reglement reglement=Reglement.builder().montantPaye(150).montantRestant(200).payee(false)
-            //.dateReglement.setDate(04/04/2023)
+    Reglement reglement=Reglement.builder().montantPaye(150).montantRestant(200).payee(false).dateReglement(new Date()).build();
 
-    .build();
-
-    // Test de Classe Reglement
+    // Classe Secteur Activite
     @Test
     @Order(0)
    public void ajouterSecteurActiviteTest(){
@@ -79,7 +77,7 @@ class Team1ApplicationTests {
    secteurActiviteRepo.delete(secteur);
     }
 
-    // Test de Classe Reglement
+    // Classe Reglement
 
     @Test
     @Order(5)
@@ -138,7 +136,9 @@ class Team1ApplicationTests {
 
 
 
-
+    @Test
+    void contextLoads() {
+    }
 
 
 

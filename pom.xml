@@ -87,6 +87,18 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.9.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>1.9.2</version>
+            <scope>test</scope>
+        </dependency>
 
 
         <dependency>
@@ -98,7 +110,7 @@
         <dependency>
             <groupId>org.apache.maven.wagon</groupId>
             <artifactId>wagon-http</artifactId>
-            <version>2.1</version>
+            <version>3.5.2</version>
         </dependency>
 
 
@@ -107,10 +119,6 @@
 
         <pluginManagement>
             <plugins>
-
-
-
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
@@ -198,11 +206,9 @@
 
    </plugins>
 
-
+   <finalName>team1</finalName>
 
     </build>
-
-
     <profiles>
         <profile>
             <id>autreDistrib</id>
