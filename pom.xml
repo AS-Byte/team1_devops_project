@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.9</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
     <groupId>tn.esp</groupId>
     <artifactId>team1</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <name>team1</name>
     <description>team1</description>
-
     <properties>
         <java.version>1.8</java.version>
         <java.version>11</java.version>
@@ -24,7 +20,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,7 +39,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
@@ -198,7 +192,7 @@
             <distributionManagement>
                 <repository>
                     <id>nexus</id>
-                    <url>http://192.168.215.200:8081/nexus/content/repository/Team1-Devops/</url>
+                    <url>http://192.168.17.200:8081/nexus/content/repository/Team1-Devops/</url>
                 </repository>
             </distributionManagement>
         </profile>
