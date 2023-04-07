@@ -51,6 +51,20 @@ pipeline {
            }
        }
 
+       stage('Build Docker image') {
+                          steps {
+                              sh 'docker build -t asbyte/my-image .'
+                          }
+                      }
+      stage('Push Docker image to hub') {
+          steps {
+               withCredentials([string(credentialsId:"dockerhub-pwd-only", variable: "dockerhubpwd")]){
+                   sh 'docker login -u asbyte -p ${dockerhubpwd}'
+               }
+               sh "docker push asbyte/my-image"
+          }
+      }
+
 
     }
 }
