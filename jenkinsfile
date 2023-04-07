@@ -37,15 +37,13 @@ pipeline {
                }
        stage('Push Docker image to hub') {
            steps {
-                script {sh 'docker login -u asbyte -p Sixr95HC2zASp9E'
-                        def dockerImage = sh(script: 'docker images my-docker-image --format "{{.Repository}}:{{.Tag}}"', returnStdout: true).trim()
+                withCredentials([string(credentialsId:"dockerhub_pwd", variable: "dockerhubpwd")]){
+                    sh 'docker login -u asbyte -p ${dockerhubpwd}'
+                }
                         sh "docker push amine/my-image"
                 }
            }
        }
-
-
-
     }
 }
 
@@ -144,4 +142,8 @@ o   Tester les services de l'application avec  postman ou « Swagger ». Un simp
 
 def taggedImage = "https://index.docker.io/v1/${dockerImage}-${BUILD_NUMBER}"
                         sh "docker tag ${dockerImage} ${taggedImage}"
+
+
+
+                def dockerImage = sh(script: 'docker images my-docker-image --format "{{.Repository}}:{{.Tag}}"', returnStdout: true).trim()
 */
