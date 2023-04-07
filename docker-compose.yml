@@ -1,7 +1,8 @@
-version: "2"
+version: "3"
 services:
   springboot-image:
     image: nadagharbi/projet-devops
+    container_name: projet-devops
     command: tail -F anything
     depends_on:
       - mysqldb
@@ -9,6 +10,7 @@ services:
       - 9001:9001
   mysqldb:
     image: mysql
+    container_name: mysql
     ports:
       - 3307:3306
     environment:

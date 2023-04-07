@@ -44,8 +44,8 @@ pipeline {
             }
 
             stage('Mvn-Test') {
-                                                 steps {
-                                                       script{
+               steps {
+                   script{
 
                                                       sh """mvn test"""
                                                                }
@@ -121,11 +121,11 @@ pipeline {
                                     }
                                  }
 
-                                 /* stage('docker-compose'){
+                                  stage('docker-compose'){
                                      steps {
                                         sh 'docker-compose up'
                                      }
-                                  }*/
+                                  }
 
 
 
