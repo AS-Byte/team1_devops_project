@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import tn.esp.team1.entities.Stock;
 import tn.esp.team1.services.IStockService;
 @RestController
@@ -44,6 +44,7 @@ public class StockRestController {
 	@PostMapping("/add-stock")
 	@ResponseBody
 	public Stock addStock(@RequestBody Stock s) {
+		System.out.print("here: "+s.getLibelleStock());
 		Stock stock = stockService.addStock(s);
 		return stock;
 	}
