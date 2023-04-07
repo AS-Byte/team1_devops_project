@@ -185,7 +185,17 @@
             </plugin>
 
         </plugins>
+
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-http</artifactId>
+                <version>2.10</version>
+            </extension>
+        </extensions>
+        <finalName>springboot-docker</finalName>
     </build>
+
     <profiles>
         <profile>
             <id>autreDistrib</id>
