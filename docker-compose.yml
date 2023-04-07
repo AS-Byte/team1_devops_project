@@ -1,7 +1,7 @@
 version: "2"
 services:
   springboot-image:
-    image: nadagharbi/devops-image
+    image: nadagharbi/projet-devops
     command: tail -F anything
     depends_on:
       - mysqldb

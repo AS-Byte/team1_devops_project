@@ -98,7 +98,7 @@ pipeline {
 
                                 stage('Build Docker image') {
                                     steps {
-                                     sh 'docker build -t nadagharbi/devops-image .'
+                                     sh 'docker build -t nadagharbi/projet-devops .'
                                  }
                                 }
 
@@ -107,7 +107,7 @@ pipeline {
                                         withCredentials([string(credentialsId:"dockerhub-pwd", variable: "dockerhubpwd")]){
                                             sh 'docker login -u nadagharbi -p ${dockerhubpwd}'
                                         }
-                                        sh 'docker push nadagharbi/devops-image'
+                                        sh 'docker push nadagharbi/projet-devops'
                                     }
                                  }
 
