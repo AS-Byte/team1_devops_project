@@ -21,6 +21,13 @@ pipeline {
                 credentialsId: 'git_pwd_pat'
             }
        }
+
+       stage('MVN-CLEAN') {
+                       steps {
+                           sh """mvn clean install"""
+                       }
+                  }
+
        stage('MVN-BUILD') {
             steps {
                 script{
