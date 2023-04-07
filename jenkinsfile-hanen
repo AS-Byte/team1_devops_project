@@ -65,52 +65,52 @@ pipeline {
                               }
 
 
-                              stage('Upload Jar To NEXUS') {
+        stage('Upload Jar To NEXUS') {
 
-                                                       steps {
-                                                              script{
+             steps {
+                    script{
 
-                                                                   pom = readMavenPom file: "pom.xml";
-                                                                  filesByGlob = findFiles(glob:"target/*.${pom.packaging}");
-                                                                  echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}";
-                                                                  artifactPath = filesByGlob[0].path;
-                                                                  artifactExists = fileExists artifactPath;
-                                                                  if(artifactExists){
-                                                                                 echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging},version: ${pom.version}";
-                                                                                   nexusArtifactUploader(
-                                                                                            nexusVersion:NEXUS_VERSION,
-                                                                                            protocol:NEXUS_PROTOCOL,
-                                                                                            nexusUrl:NEXUS_URL,
-                                                                                            groupId: pom.groupId,
-                                                                                            version:pom.version,
-                                                                                            repository:NEXUS_REPOSITORY,
-                                                                                            credentialsId:NEXUS_CREDENTIAL_ID,
+                             pom = readMavenPom file: "pom.xml";
+                             filesByGlob = findFiles(glob:"target/*.${pom.packaging}");
+                             echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}";
+                             artifactPath = filesByGlob[0].path;
+                             artifactExists = fileExists artifactPath;
+                             if(artifactExists){
+                             echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging},version: ${pom.version}";
+                             nexusArtifactUploader(
+                             nexusVersion:NEXUS_VERSION,
+                             protocol:NEXUS_PROTOCOL,
+                             nexusUrl:NEXUS_URL,
+                             groupId: pom.groupId,
+                             version:pom.version,
+                             repository:NEXUS_REPOSITORY,
+                             credentialsId:NEXUS_CREDENTIAL_ID,
 
-                                                                                              artifacts :[
-                                                                                                  [ artifactId: pom.artifactId,
-                                                                                                    classifier: '',
-                                                                                                    file: artifactPath,
-                                                                                                    type: pom.packaging],
-                                                                                                    [artifactId: pom.artifactId,
-                                                                                                     classifier: '',
-                                                                                                     file:"pom.xml",
-                                                                                                     type: "pom"
-                                                                                                     ]
+                              artifacts :[
+                                       [ artifactId: pom.artifactId,
+                                         classifier: '',
+                                         file: artifactPath,
+                                         type: pom.packaging],
+                                         [artifactId: pom.artifactId,
+                                         classifier: '',
+                                         file:"pom.xml",
+                                         type: "pom"
+                                          ]
                                                                                                             ]
                                                                                                           );
                                                                                                         }
-                                                                  else{
-                                                                         error "*** File: ${artifactPath},does not exit ";
-                                                                        }
+                                          else{
+                                              error "*** File: ${artifactPath},does not exit ";
+                                               }
 
-                                                                 }
-                                                          }
-                                          }
-
-
+                                    }
+                  }
+       }
 
 
-         stage('Build Docker Image'){
+
+
+         stage('Build Docker Image of Spring-Project'){
                  steps {
 
                    sh """ docker build -t azzouzhanen2023/team1:0.0.1 ."""
@@ -118,7 +118,7 @@ pipeline {
                      }
                                             }
 
-         stage('Push Docker Image'){
+         stage('Push Docker Image To Docker Hub'){
                  steps {
                     withCredentials([string(credentialsId: 'DockerHub-pwd', variable: 'dockerhubPWD')]){
                    sh " docker login -u azzouzhanen2023 -p ${dockerhubPWD}"
@@ -129,6 +129,16 @@ pipeline {
                                             }
 
 
+
+       stage('Start Containers'){
+         steps{
+
+         sh 'docker compose up --no-color --wait'
+         sh 'docker compose ps'
+         }
+
+
+       }
 
 
 
