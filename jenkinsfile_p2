@@ -1,0 +1,91 @@
+pipeline {
+    agent any
+    tools {
+          // Install the Maven version configured as "M2_HOME" and add it to the path.
+          maven 'MAVEN_HOME'
+          jdk 'JAVA_HOME'
+        }
+
+    environment {
+           NEXUS_VERSION = "nexus3"
+           NEXUS_PROTOCOL = "http"
+           NEXUS_URL = "192.168.17.200:8081"
+           NEXUS_REPOSITORY = "Team1-Devops"
+           NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
+    }
+
+    stages {
+       stage('Connect to Git') {
+            steps {
+                git branch: 'amine_branch',
+                url: 'https://github.com/AS-Byte/team1_devops_project.git',
+                credentialsId: 'git_pwd_pat'
+            }
+       }
+
+       stage('MVN-CLEAN') {
+                       steps {
+                           sh """mvn clean install"""
+                       }
+                  }
+
+       stage('MVN-BUILD') {
+            steps {
+                script{
+                    sh """mvn -Dmaven.test.failure.ignore=true clean package"""
+                }
+            }
+       }
+
+       stage("Publish to Nexus Repos Manager") {
+                  steps {
+                      script {
+                          pom = readMavenPom file: "pom.xml";
+                          filesByGlob = findFiles(glob: "target *//*.${pom.packaging}");
+                          echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
+                          artifactPath = filesByGlob[0].path;
+                          artifactExists = fileExists artifactPath;
+
+                          if(artifactExists) {
+                              echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                              nexusArtifactUploader(
+                                  nexusVersion:NEXUS_VERSION,
+                                  protocol:NEXUS_PROTOCOL,
+                                  nexusUrl:NEXUS_URL,
+                                  groupId: pom.groupId,
+                                  version:pom.version,
+                                  repository:NEXUS_REPOSITORY,
+                                  credentialsId:NEXUS_CREDENTIAL_ID,
+
+                                  artifacts: [
+                                      [artifactId: pom.artifactId,
+                                      classifier: '',
+                                      file: artifactPath,
+                                      type: pom.packaging],
+                                      [artifactId: pom.artifactId,
+                                      classifier: '',
+                                      file: "pom.xml",
+                                      type: "pom"]
+                                  ]
+                              );
+                          } else {
+                              error "*** File: ${artifactPath}, could not be found";
+                          }
+                      }
+                  }
+              }
+       stage('Build Docker image') {
+                   steps {
+                       sh 'docker build -t asbyte/my-image .'
+                   }
+               }
+       stage('Push Docker image to hub') {
+           steps {
+                withCredentials([string(credentialsId:"dockerhub-pwd-only", variable: "dockerhubpwd")]){
+                    sh 'docker login -u asbyte -p ${dockerhubpwd}'
+                }
+                sh "docker push asbyte/my-image"
+           }
+       }
+    }
+}
