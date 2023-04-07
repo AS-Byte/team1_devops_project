@@ -15,7 +15,6 @@ import tn.esp.team1.repositories.ReglementRepository;
 import tn.esp.team1.repositories.SecteurActiviteRepository;
 import java.util.Date;
 import java.util.List;
-
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
@@ -27,8 +26,6 @@ class Team1ApplicationTests {
     @Autowired
     CategorieProduitRepository categorieProduitRepository;
 
-
-
     Produit produit = Produit.builder().codeProduit("P1").libelleProduit("lait").prix(Float.parseFloat("1,800")).dateCreation(new Date()).dateDerniereModification(new Date()).build();
     CategorieProduit categorieProduit=CategorieProduit.builder().codeCategorie("perissable").libelleCategorie("pretamanger").build();
 
@@ -39,7 +36,6 @@ class Team1ApplicationTests {
         produit=produitRepository.save(produit);
         log.info(produit.toString());
         Assertions.assertNotNull(produit.getIdProduit());
-
     }
 
     @Test
