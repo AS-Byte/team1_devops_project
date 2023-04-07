@@ -40,8 +40,7 @@ pipeline {
                 withCredentials([string(credentialsId:"dockerhub_pwd", variable: "dockerhubpwd")]){
                     sh 'docker login -u asbyte -p ${dockerhubpwd}'
                 }
-                        sh "docker push amine/my-image"
-                }
+                sh "docker push amine/my-image"
            }
        }
     }
