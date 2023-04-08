@@ -3,7 +3,7 @@ services:
   springboot-app:
     image: azzouzhanen2023/team1
     ports:
-      - '8082:8082'
+      - 8082:8082
     depends_on:
       - mysqldb
   mysqldb:
