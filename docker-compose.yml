@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   springboot-app:
     image: azzouzhanen2023/team1
