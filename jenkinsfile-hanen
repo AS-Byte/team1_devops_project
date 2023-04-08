@@ -113,7 +113,7 @@ pipeline {
          stage('Build Docker Image of Spring-Project'){
                  steps {
 
-                   sh """ docker build -t azzouzhanen2023/team1:0.0.3 ."""
+                   sh """ docker build -t azzouzhanen2023/team1 ."""
 
                      }
                                             }
@@ -123,7 +123,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'DockerHub-pwd', variable: 'dockerhubPWD')]){
                    sh " docker login -u azzouzhanen2023 -p ${dockerhubPWD}"
                    }
-                   sh 'docker push  azzouzhanen2023/team1:0.0.3 '
+                   sh 'docker push  azzouzhanen2023/team1: '
 
                      }
                                             }
