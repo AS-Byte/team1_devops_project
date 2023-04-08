@@ -2,23 +2,24 @@ version: "3"
 services:
   myapp:
     image: nadagharbi/projet-devops
-    command: tail -F anything
-    depends_on:
-      - mysqldb
     ports:
       - 8086:8086
+    depends_on:
+      - mysqldb
     restart: always
   mysqldb:
     image: mysql
+    cap_add:
+      - SYS_NICE
     restart: always
-    volumes:
-      - db_data:/var/lib/mysql
-    ports:
-      - 3307:3306
     environment:
       MYSQL_DATABASE: projetdevops
       MYSQL_USER: nada
       MYSQL_PASSWORD: nada
       MYSQL_ROOT_PASSWORD: nada
+    ports:
+      - 3307:3306
+    volumes:
+      - db_data:/var/lib/mysql/data
 volumes:
-  db_data:
+  db_data: {}
