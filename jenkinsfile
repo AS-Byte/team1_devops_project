@@ -8,8 +8,8 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.1.244:8081"
-        NEXUS_REPOSITORY = "maven-nexus-repo"
-        NEXUS_CREDENTIAL_ID = "nexus-credential"
+        NEXUS_REPOSITORY = "NEXUS_REPOSITORY"
+        NEXUS_CREDENTIAL_ID = "nexus-nexus"
     }
 
     stages {
@@ -66,7 +66,7 @@ pipeline {
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: NEXUS_REPOSITORY,
-                            credentialsId: nexus-nexus,
+                            credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
                                 [artifactId: pom.artifactId,
                                 classifier: '',
