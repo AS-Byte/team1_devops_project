@@ -1,7 +1,7 @@
 version: "2"
 services:
   springboot-app:
-    image: azzouzhanen2023/team1:0.02
+    image: azzouzhanen2023/team1
     ports:
       - 8082:8082
     depends_on:
