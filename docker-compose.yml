@@ -20,3 +20,5 @@ services:
       MYSQL_USER: asbyte
       MYSQL_PASSWORD: asbyte
       MYSQL_ROOT_PASSWORD: asbyte
+volumes:
+  db_data:
