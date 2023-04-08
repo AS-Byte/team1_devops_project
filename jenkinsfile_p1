@@ -46,7 +46,7 @@ pipeline {
        stage('MVN-SONARQUBE') {
            steps {
                withSonarQubeEnv('SonarQube'){
-                   sh """mvn sonar:sonar -Pcoverage"""
+                   sh """mvn sonar:sonar"""
                }
            }
        }
