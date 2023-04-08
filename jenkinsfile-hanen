@@ -65,7 +65,7 @@ pipeline {
                               }
 
 
-        stage('Upload Jar To NEXUS') {
+       /* stage('Upload Jar To NEXUS') {
 
              steps {
                     script{
@@ -105,7 +105,7 @@ pipeline {
 
                                     }
                   }
-       }
+       }*/
 
 
 

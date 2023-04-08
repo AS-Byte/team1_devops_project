@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   springboot-app:
     image: azzouzhanen2023/team1
@@ -8,11 +8,17 @@ services:
       - mysqldb
   mysqldb:
     image: mysql
-    ports:
-      - 3307:3306
+    cap_add:
+      - SYS_NICE
     restart: always
     environment:
       MYSQL_DATABASE: team1db
       MYSQL_USER: hanen
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3307:3306'
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
