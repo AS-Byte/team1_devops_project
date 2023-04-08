@@ -17,6 +17,7 @@ import tn.esp.team1.repositories.ReglementRepository;
 import tn.esp.team1.repositories.SecteurActiviteRepository;
 import java.util.Date;
 import java.util.List;
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Team1ApplicationTests.class)
 class Team1ApplicationTests {
     @Test
