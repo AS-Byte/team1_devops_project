@@ -133,8 +133,8 @@ pipeline {
        stage('Start Containers'){
          steps{
 
-         sh ' docker-compose up --build '
-         sh 'docker-compose ps'
+                sh ' docker-compose up  '
+
          }
 
 
