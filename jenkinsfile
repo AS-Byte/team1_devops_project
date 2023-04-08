@@ -86,19 +86,6 @@ pipeline {
             }
         }
     
-         stage('Build') {
-            steps {
-            sh 'docker build -t khalilmilan/dp-alpine:latest .'
-
-            }
-         }
-    
-    
-
-
-
-
-
 
     }
    }
