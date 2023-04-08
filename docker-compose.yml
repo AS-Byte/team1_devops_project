@@ -1,0 +1,22 @@
+version: "3"
+services:
+  myapp:
+    image: asbyte/my-image
+    command: tail -F anything
+    depends_on:
+      - mysqldb
+    ports:
+      - 8086:8086
+    restart: always
+  mysqldb:
+    image: mysql
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: projetdevops
+      MYSQL_USER: asbyte
+      MYSQL_PASSWORD: asbyte
+      MYSQL_ROOT_PASSWORD: asbyte

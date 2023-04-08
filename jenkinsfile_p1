@@ -64,7 +64,11 @@ pipeline {
                sh "docker push asbyte/my-image"
           }
       }
-
+      stage('docker-compose'){
+          steps {
+            sh 'docker-compose up'
+          }
+      }
 
     }
 }
