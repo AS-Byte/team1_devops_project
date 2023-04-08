@@ -10,7 +10,7 @@
     </parent>
     <groupId>tn.esp</groupId>
     <artifactId>team1</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>team1</name>
     <description>team1</description>
     <properties>
