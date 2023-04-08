@@ -21,4 +21,4 @@ services:
       MYSQL_PASSWORD: nada
       MYSQL_ROOT_PASSWORD: nada
 volumes:
- db_data:
+  db_data:
