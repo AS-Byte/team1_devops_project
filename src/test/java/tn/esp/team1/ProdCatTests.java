@@ -19,8 +19,11 @@ import tn.esp.team1.services.ProduitServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(SpringExtension.class)
 @ExtendWith(MockitoExtension.class)
@@ -69,5 +72,26 @@ public class ProdCatTests {
         Produit produit = produitService.updateProduit(p);
         assertSame(produit, p);
         log.info("Après ==> " + p.toString());
+    }
+
+    @Test
+    public void retreiveProduitTest() {
+        Mockito.when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
+        Produit produit = produitService.retrieveProduit((long) 2);
+        assertNotNull(produit);
+        log.info("get ==> " + produit.toString());
+
+        verify(produitRepository).findById(Mockito.anyLong());
+
+    }
+
+    @Test
+    public void retreiveAllProduitTest() {
+        Mockito.when(produitRepository.findAll()).thenReturn(list);
+        List<Produit> magasins = produitRepository.findAll();
+        assertNotNull(magasins);
+        for (Produit magasin : magasins) {
+            log.info(magasin.toString());
+        }
     }
 }
